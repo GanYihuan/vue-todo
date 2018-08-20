@@ -15,40 +15,53 @@ new Vue({
       <p>Obj.a: <input type="text" v-model="obj.a"></p>
     </div>
   `,
-  data: {
-    firstName: 'Jokcy',
-    lastName: 'Lou',
-    number: 0,
-    fullName: '',
-    obj: {
-      a: 0
+  data() {
+    return {
+      firstName: 'Jokcy',
+      lastName: 'Lou',
+      number: 0,
+      fullName: '',
+      obj: {
+        a: 0
+      }
     }
   },
+  /* 能缓存, 生成值 */
   computed: {
     name: {
-      get () {
+      get() {
         console.log('new name')
         return `${this.firstName} ${this.lastName}`
       },
-      set (name) {
+      /* 不推荐改原来的值 */
+      set(name) {
         const names = name.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
       }
+      // return `${this.firstName} ${this.lastName}`
     }
   },
+  /* 监听到有变化才执行, 生成值, 不推荐改原来的值 */
   watch: {
+    // firstName(newName, oldName) {
+    //   this.fullName = newName + ' ' + this.lastName
+    // }
+    // obj: {}
     'obj.a': {
-      handler () {
+      handler() {
         console.log('obj.a changed')
-        this.obj.a += 1
+        /* 不推荐改原来的值, 应该监听然后处理成另外一个值 */
+        // this.obj.a += 1
       },
+      /* 立即执行 handler() */
       immediate: true
+      /* 针对 obj:{}, 监听整个 obj，高性能开销 */
       // deep: true
     }
   },
   methods: {
-    getName () {
+    getName() {
       console.log('getName invoked')
       return `${this.firstName} ${this.lastName}`
     }

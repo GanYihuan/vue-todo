@@ -1,0 +1,62 @@
+import Vue from 'vue'
+
+const component = {
+  props: {
+    active: {
+      /* 必须传入数据 */
+      required: true,
+      type: Boolean,
+      default: true,
+      validator(value) {
+        return typeof value === 'boolean'
+      }
+    },
+    propOne: String
+  },
+  /* data 使用函数来定义 */
+  data() {
+    return {
+      text: 0
+    }
+  },
+  template: `
+    <div>
+      <input type="text" v-model="text"/>
+      <span @click="handleChange">{{propOne}}</span>
+      <span v-show="active">see me if active</span>
+    </div>
+  `,
+  methods: {
+    handleChange() {
+      // 抛出事件给父级, 单项数据流
+      this.$emit('change')
+    }
+  }
+}
+// Vue.component('CompOne', component)
+
+new Vue({
+  el: '#root',
+  template: `
+    <div>
+      <comp-one ref="comp1" :active="true" :prop-one="prop1" @change="handleChange"></comp-one>
+      <comp-one :active="true" propOne="text2"></comp-one>
+    </div>
+  `,
+  data() {
+    return {
+      prop1: 'text1'
+    }
+  },
+  mounted() {
+    console.log(this.$refs.comp1)
+  },
+  methods: {
+    handleChange() {
+      this.prop1 += 1
+    }
+  },
+  components: {
+    CompOne: component
+  }
+})

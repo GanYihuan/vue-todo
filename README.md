@@ -89,14 +89,6 @@ cnpm i webpack webpack-dev-server webpack-merge webpack-cli -D
 
 ## 3-6 Vue 的原生指令
 
-- v-once
-- v-show
-- v-if, v-else-if, v-else
-- v-text
-- v-html
-- v-model, v-model.trim, v-model.number, v-model.lazy
-- v-for
-
 ## 3-7 Vue 的组件之组件的定义
 
 - props 属性定义

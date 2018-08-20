@@ -175,7 +175,6 @@ npm i babel-preset-stage-1 -D
 
 ## 4-8 Vuex 之 模块
 
-- modules 不了解
 - 热更替功能
 
 ## 4-9 Vuex 之其他一些 API 和配置

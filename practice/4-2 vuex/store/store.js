@@ -13,56 +13,56 @@ export default () => {
     state: defaultState,
     mutations,
     getters,
-    actions
+    actions,
     /* Define the vuex plugin */
-    // plugins: [
-    //   (store) => {
-    //     console.log('my plugin invoked')
-    //   }
-    // ],
+    plugins: [
+      store => {
+        console.log('my plugin invoked')
+      }
+    ],
     /* Module function */
-    // modules: {
-    /* Modules have different scopes */
-    //   a: {
-    /* Can write the same mutation */
-    //     namespaced: true,
-    //     state: {
-    //       text: 1
-    //     },
-    //     getters: {
-    /* rootState global state */
-    //       textPlus (state, getters, rootState) {
-    //         return state.text + rootState.b.text
-    //       }
-    //     },
-    //     mutations: {
-    //       updateText (state, text) {
-    //         console.log('a.state', state)
-    //         state.text = text
-    //       }
-    //     },
-    //     actions: {
-    //       add ({ state, commit, rootState }) {
-    /* {root:true}: global status */
-    //         commit('updateCount', { num: 56789 }, { root: true })
-    //       }
-    //     }
-    //   },
-    /* Modules have different scopes */
-    //   b: {
-    /* Can write the same mutation */
-    //     namespaced: true,
-    //     state: {
-    //       text: 2
-    //     },
-    //     actions: {
-    //       testAction ({ commit }) {
-    /* {root:true}: Global call mutation */
-    //         commit('a/updateText', 'test text', { root: true })
-    //       }
-    //     }
-    //   }
-    // }
+    modules: {
+      /* Modules have different scopes */
+      a: {
+        /* Can write the same mutation */
+        namespaced: true,
+        state: {
+          text: 1
+        },
+        getters: {
+          /* rootState global state */
+          textPlus(state, getters, rootState) {
+            return state.text + rootState.b.text
+          }
+        },
+        mutations: {
+          updateText(state, text) {
+            console.log('a.state', state)
+            state.text = text
+          }
+        },
+        actions: {
+          add({ state, commit, rootState }) {
+            /* {root:true}: global invoked vuex/mutation */
+            commit('updateCount', { num: 56789 }, { root: true })
+          }
+        }
+      },
+      /* Modules have different scopes */
+      b: {
+        /* Can write the same mutation */
+        namespaced: true,
+        state: {
+          text: 2
+        },
+        actions: {
+          testAction({ commit }) {
+            /* {root:true}: global invoked vuex/mutation */
+            commit('a/updateText', 'test text', { root: true })
+          }
+        }
+      }
+    }
   })
   /* vuex Hot replacement function */
   if (module.hot) {

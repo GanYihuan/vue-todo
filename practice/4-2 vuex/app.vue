@@ -9,7 +9,7 @@ export default {
 		/* get vuex store */
 		console.log(this.$store)
 		let i = 1
-		/* dispatch: trigger vuex/actions */
+		/* dispatch: invoked vuex/actions */
 		this.$store.dispatch(updateCountAsync, {
 			num: 5,
 			time: 2000
@@ -19,7 +19,6 @@ export default {
 			time: 2000
 		})
 		this['a/updateText']('123')
-		/* invoked vuex/actions */
 		this['a/add']()
 		this['b/testAction']()
 		this.testAction()
@@ -45,8 +44,8 @@ export default {
 	},
 	computed: {
 		/* Use state data inside vuex */
-		...mapState(['loading']),
-		/* get vuex/state data */
+		// ...mapState(['loading']),
+		/* get vuex/state */
 		...mapState({
 			// counter: 'count',
 			counter: state => state.count,
@@ -54,7 +53,7 @@ export default {
 			textA: state => state.a.text,
 			textC: state => state.c.text
 		}),
-		/* get vuex getters */
+		/* get vuex/getters */
 		...mapGetters({
 			fullName: 'fullName',
 			textPlus: 'a/textPlus'
@@ -64,7 +63,7 @@ export default {
 			return this.$store.state.count
 		},
 		textA() {
-			/* Call module b */
+			/* invoked module b */
 			return this.$store.state.b.text
 		},
 		fullName() {

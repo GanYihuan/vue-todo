@@ -9,30 +9,33 @@ Vue.use(Vuex)
 
 const store = createStore()
 
-/* dynamic registration module */
+/* dynamic regist module */
 store.registerModule('c', {
   state: {
     text: 3
   }
 })
 /* dynamic unbinding module */
-// store.unregisterModule('c', {
-//   state: {
-//     text: 3
-//   }
-// })
+store.unregisterModule('c', {
+  state: {
+    text: 3
+  }
+})
 
 /* when state.count change, (newCount) will invoked, simular getters */
-// store.watch((state) => state.count + 1, (newCount) => {
-//   console.log('new count watched:', newCount)
-// })
+store.watch(
+  state => state.count + 1,
+  newCount => {
+    console.log('new count watched:', newCount)
+  }
+)
 
 /* mutation invoked */
-// store.subscribe((mutation, state) => {
-//   console.log(mutation.type)
-/* payload: mutation Received param */
-//   console.log(mutation.payload)
-// })
+store.subscribe((mutation, state) => {
+  console.log(mutation.type)
+  /* payload: mutation Received param */
+  console.log(mutation.payload)
+})
 
 /* actions invoked */
 store.subscribeAction((action, state) => {

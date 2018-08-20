@@ -111,9 +111,8 @@ cnpm i webpack webpack-dev-server webpack-merge webpack-cli -D
 
 ## 3-10 Vue 的组件之高级属性
 
-- slot
-- slot-scope
-- provide, inject
+- slot, slot-scope
+- $parent, provide()
 
 ## 3-11 Vue 的组件之 render function
 

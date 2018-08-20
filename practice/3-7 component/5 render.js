@@ -8,18 +8,23 @@ const component = {
   //     <slot></slot>
   //   </div>
   // `,
-  render (createElement) {
-    return createElement('div', {
-      style: this.style
-      // on: {
-      //   click: () => { this.$emit('click') }
-      // }
-    }, [
-      this.$slots.header,
-      this.props1
-    ])
+  /* 上下能替换, render() 原理 */
+  render(createElement) {
+    return createElement(
+      'div',
+      {
+        style: this.style
+        // ,
+        // on: {
+        //   click: () => {
+        //     this.$emit('click')
+        //   }
+        // }
+      },
+      [this.$slots.default, this.$slots.header, this.props1]
+    )
   },
-  data () {
+  data() {
     return {
       style: {
         width: '200px',
@@ -36,16 +41,16 @@ new Vue({
     CompOne: component
   },
   el: '#root',
-  data () {
+  data() {
     return {
       value: '123'
     }
   },
-  mounted () {
+  mounted() {
     console.log(this.$refs.comp.value, this.$refs.span)
   },
   methods: {
-    handleClick () {
+    handleClick() {
       console.log('clicked')
     }
   },
@@ -54,7 +59,8 @@ new Vue({
   //     <span ref="span">{{value}}</span>
   //   </comp-one>
   // `,
-  render (createElement) {
+  /* 上下能替换, when use template, will recall this */
+  render(createElement) {
     return createElement(
       'comp-one',
       {
@@ -62,21 +68,31 @@ new Vue({
         props: {
           props1: this.value
         },
+        /* 需要发送 $emit */
         // on: {
         //   click: this.handleClick
         // },
+        /* 自动绑定到根节点 <div></div>, 不需要发送$emit */
         nativeOn: {
           click: this.handleClick
         }
       },
       [
-        createElement('span', {
-          ref: 'span',
-          slot: 'header',
-          attrs: {
-            id: 'test-id'
-          }
-        }, this.value)
+        createElement(
+          'span',
+          {
+            ref: 'span',
+            slot: 'header',
+            /* 原生 dom 效果相似 */
+            domProps: {
+              innerHTML: '<span>345</span>'
+            },
+            attrs: {
+              id: 'test-id'
+            }
+          },
+          this.value
+        )
       ]
     )
   }

@@ -1,11 +1,6 @@
 ﻿<script>
 /* grammar sugar: babel-preset-stage-1 */
-import {
-	mapState
-	// mapGetters,
-	// mapActions,
-	// mapMutations
-} from 'vuex'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 // console.log(Header.__docs)
 
 export default {
@@ -13,7 +8,7 @@ export default {
 		/* routes.js Setting props: true, Pass routing parameters :id */
 		/* get vuex store */
 		console.log(this.$store)
-		// let i = 1
+		let i = 1
 		/* dispatch: trigger vuex/actions */
 		// this.$store.dispatch(updateCountAsync, {
 		//   num: 5,
@@ -29,14 +24,14 @@ export default {
 		// this['b/testAction']()
 		// this.testAction()
 		// this.$store.state.count = 3
-		// setInterval(() => {
-		/* commit: invoked vuex/mutations */
-		//   this.$store.commit('updateCount', i ++)
-		//   this.updateCount({
-		//     num: i++,
-		//     num2: 2
-		//   })
-		// }, 1000)
+		setInterval(() => {
+			/* commit: invoked vuex/mutations */
+			this.$store.commit('updateCount', i++)
+			this.updateCount({
+				num: i++,
+				num2: 2
+			})
+		}, 1000)
 	},
 	methods: {
 		// ...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
@@ -53,26 +48,25 @@ export default {
 		...mapState(['loading']),
 		/* get vuex/state data */
 		...mapState({
-			counter: 'count',
+			// counter: 'count',
 			counter: state => state.count,
-			/* Indicate the module name when using the module store.js */
+			/* Call module */
 			textA: state => state.a.text,
 			textC: state => state.c.text
 		}),
-		count() {
-			/* get vuex store */
-			return this.$store.state.count
-		},
-		/* module: */
-		textA() {
-			/* Call module b */
-			return this.$store.state.b.text
-		},
 		/* get vuex getters */
 		...mapGetters({
 			fullName: 'fullName',
 			textPlus: 'a/textPlus'
 		}),
+		count() {
+			/* get vuex store */
+			return this.$store.state.count
+		},
+		textA() {
+			/* Call module b */
+			return this.$store.state.b.text
+		},
 		fullName() {
 			return this.$store.getters.fullName
 		}

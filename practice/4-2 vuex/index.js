@@ -33,14 +33,14 @@ store.watch(
 /* mutation invoked */
 store.subscribe((mutation, state) => {
   console.log(mutation.type)
-  /* payload: mutation Received param */
+  /* payload: mutation received param */
   console.log(mutation.payload)
 })
 
 /* actions invoked */
 store.subscribeAction((action, state) => {
   console.log(action.type)
-  /* payload: actions Received params */
+  /* payload: actions received param */
   console.log(action.payload)
 })
 

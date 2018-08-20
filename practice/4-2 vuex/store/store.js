@@ -14,7 +14,7 @@ export default () => {
     mutations,
     getters,
     actions,
-    /* Define the vuex plugin */
+    /* define vuex plugin */
     plugins: [
       store => {
         console.log('my plugin invoked')

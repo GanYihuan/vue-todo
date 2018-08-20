@@ -1,5 +1,4 @@
-import Router from 'vue-router'
-
+﻿import Router from 'vue-router'
 import routes from './routes'
 
 export default () => {
@@ -16,12 +15,8 @@ export default () => {
         return { x: 0, y: 0 }
       }
     }
-    // fallback: true
-    // parseQuery (query) {
-
-    // },
-    // stringifyQuery (obj) {
-
-    // }
+    // fallback: true,
+    // parseQuery (query) {},
+    // stringifyQuery (obj) {}
   })
 }

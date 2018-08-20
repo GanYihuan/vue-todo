@@ -56,7 +56,7 @@ setInterval(() => {
 // app.$options.render = (h) => {
 //   return h('div', {}, 'new render function')
 // }
-// console.log(app.$root) /* vue$3 */
+// console.log(app.$root)
 // console.log(app.$root === app) /* true */
 // console.log(app.$children)
 // console.log(app.$slots) /* 插槽 */

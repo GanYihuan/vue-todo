@@ -1,4 +1,4 @@
-/* asynchronous modify state */
+/* async modify state */
 // import model from '../../model/client-model'
 import model from 'model'
 import notify from '../../components/notification/function'

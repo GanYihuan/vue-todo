@@ -1,4 +1,4 @@
-/* synchronous modify state */
+/* sync modify state */
 export default {
   updateCount(state, { num, num2 }) {
     console.log(num2)

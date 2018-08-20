@@ -10,20 +10,20 @@ export default {
 		console.log(this.$store)
 		let i = 1
 		/* dispatch: trigger vuex/actions */
-		// this.$store.dispatch(updateCountAsync, {
-		//   num: 5,
-		//   time: 2000
-		// })
-		// this.updateCountAsync({
-		//   num: 5,
-		//   time: 2000
-		// })
-		// this['a/updateText']('123')
+		this.$store.dispatch(updateCountAsync, {
+			num: 5,
+			time: 2000
+		})
+		this.updateCountAsync({
+			num: 5,
+			time: 2000
+		})
+		this['a/updateText']('123')
 		/* invoked vuex/actions */
-		// this['a/add']()
-		// this['b/testAction']()
-		// this.testAction()
-		// this.$store.state.count = 3
+		this['a/add']()
+		this['b/testAction']()
+		this.testAction()
+		this.$store.state.count = 3
 		setInterval(() => {
 			/* commit: invoked vuex/mutations */
 			this.$store.commit('updateCount', i++)
@@ -34,8 +34,8 @@ export default {
 		}, 1000)
 	},
 	methods: {
-		// ...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
-		// ...mapMutations(['updateCount', 'a/updateText']),
+		...mapActions(['updateCountAsync', 'a/add', 'b/testAction']),
+		...mapMutations(['updateCount', 'a/updateText']),
 		notify() {
 			this.$notify({
 				content: 'test $notify',

@@ -128,6 +128,17 @@ npm i vue-router -S
 
 ## 4-2 Vue-router 之配置
 
+- history 路由不能匹配解决方法
+- webpack.config.client.js
+
+```js
+const devServer = {
+  historyApiFallback: {
+    index: '/public/index.html'
+  },
+}
+```
+
 ## 4-3 Vue-router 之路由参数传递
 
 ## 4-4 Vue-router 之导航守卫

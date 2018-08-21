@@ -10,15 +10,19 @@ const userRouter = require('./routers/user')
 const createDb = require('./db/db')
 const config = require('../app.config')
 
+const app = new Koa()
 const db = createDb(config.db.appId, config.db.appKey)
 
-const app = new Koa()
-
 app.keys = ['vue ssr tech']
-app.use(koaSession({
-  key: 'v-ssr-id',
-  maxAge: 2 * 60 * 60 * 1000
-}, app))
+app.use(
+  koaSession(
+    {
+      key: 'v-ssr-id',
+      maxAge: 2 * 60 * 60 * 1000
+    },
+    app
+  )
+)
 
 const isDev = process.env.NODE_ENV === 'development'
 

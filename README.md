@@ -189,7 +189,7 @@ npm i vue-server-renderer -S
 
 - webpack.config.server.js
 
-## 5-2: koa server
+## 5-2 使用koa实现node server
 
 > ?
 - npm i koa-router -S

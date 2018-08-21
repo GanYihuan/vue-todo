@@ -5,15 +5,15 @@ const fs = require('fs')
 const MemoryFS = require('memory-fs')
 const webpack = require('webpack')
 const VueServerRenderer = require('vue-server-renderer')
-
 const serverRender = require('./server-render')
 const serverConfig = require('../../build/webpack.config.server')
-
 const serverCompiler = webpack(serverConfig)
 const mfs = new MemoryFS()
 serverCompiler.outputFileSystem = mfs
 
+// 记录打包生成的文件
 let bundle
+// 改变了就打包，生成新文件
 serverCompiler.watch({}, (err, stats) => {
   if (err) throw err
   stats = stats.toJson()
@@ -28,7 +28,7 @@ serverCompiler.watch({}, (err, stats) => {
   console.log('new bundle generated')
 })
 
-const handleSSR = async (ctx) => {
+const handleSSR = async ctx => {
   if (!bundle) {
     ctx.body = '你等一会，别着急......'
     return
@@ -38,17 +38,14 @@ const handleSSR = async (ctx) => {
     'http://127.0.0.1:8000/public/vue-ssr-client-manifest.json'
   )
   const clientManifest = clientManifestResp.data
-
   const template = fs.readFileSync(
     path.join(__dirname, '../server.template.ejs'),
     'utf-8'
   )
-
-  const renderer = VueServerRenderer
-    .createBundleRenderer(bundle, {
-      inject: false,
-      clientManifest
-    })
+  const renderer = VueServerRenderer.createBundleRenderer(bundle, {
+    inject: false,
+    clientManifest
+  })
 
   await serverRender(ctx, renderer, template)
 }

@@ -179,10 +179,14 @@ npm i babel-preset-stage-1 -D
 
 ## 4-9 Vuex 之其他一些 API 和配置
 
-## 5-1: server webpack config
+## 5-1 开发时服务端渲染的配置和原理
 
-> ?
-- npm i vue-server-renderer -S
+- 生成一个 json 文件, 处理逻辑
+
+```console
+npm i vue-server-renderer -S
+```
+
 - webpack.config.server.js
 
 ## 5-2: koa server

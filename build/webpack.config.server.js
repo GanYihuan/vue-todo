@@ -24,12 +24,16 @@ if (isDev) {
 config = merge(baseConfig, {
   target: 'node',
   entry: path.join(__dirname, '../client/server-entry.js'),
+  // 出错在哪一行
   devtool: 'source-map',
   output: {
+    // 通过 module.export 放出去
     libraryTarget: 'commonjs2',
+    // 不需要哈希
     filename: 'server-entry.js',
     path: path.join(__dirname, '../server-build')
   },
+  // 不要打包指定文件
   externals: Object.keys(require('../package.json').dependencies),
   module: {
     rules: [

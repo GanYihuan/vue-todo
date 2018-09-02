@@ -31,7 +31,7 @@ const app = new Vue({
   /* N: when vm.$mount(el) is called */
   /* Y: has 'template' option? */
   template: '<div>{{test}}</div>',
-  /* Y: compile template as render function */
+  /* Y: compile template as render function (耗时) */
   /* N: compile outHTML(el) as template */
   /*
   dom 相关

@@ -28,6 +28,9 @@ new Vue({
   },
   /* 能缓存, 生成值 */
   computed: {
+    // name() {
+    //   return `${this.firstName} ${this.lastName}`
+    // }
     name: {
       get() {
         console.log('new name')
@@ -39,14 +42,13 @@ new Vue({
         this.firstName = names[0]
         this.lastName = names[1]
       }
-      // return `${this.firstName} ${this.lastName}`
     }
   },
   /* 监听到有变化才执行, 生成值, 不推荐改原来的值 */
   watch: {
-    // firstName(newName, oldName) {
-    //   this.fullName = newName + ' ' + this.lastName
-    // }
+    firstName(newName, oldName) {
+      this.fullName = newName + ' ' + this.lastName
+    },
     // obj: {}
     'obj.a': {
       handler() {

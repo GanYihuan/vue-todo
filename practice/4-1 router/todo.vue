@@ -9,7 +9,7 @@ export default {
 		})
 	},
 	/* Routing guard */
-	/* The same component is shown to trigger on different routes */
+	/* The same component is shown on different routes */
 	/* example: transfter route parameter */
 	beforeRouteUpdate(to, from, next) {
 		console.log('todo update enter')
@@ -18,10 +18,10 @@ export default {
 	/* Routing guard */
 	beforeRouteLeave(to, from, next) {
 		console.log('todo leave enter')
-		// if (global.comfirm('are you sure leave this page?')) {
-		//   next()
-		// }
-		next()
+		if (global.comfirm('are you sure leave this page?')) {
+			next()
+		}
+		// next()
 	}
 }
 </script>

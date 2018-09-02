@@ -3,7 +3,9 @@ import Vue from 'vue'
 const component = {
   model: {
     /* 自定义 prop 名称 */
+    // value -> value1
     prop: 'value1',
+    // input -> change
     event: 'change'
   },
   // props: ['value'],

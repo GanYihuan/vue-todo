@@ -2,6 +2,8 @@ const path = require('path')
 const createVueLoaderOptions = require('./vue-loader.config')
 const isDev = process.env.NODE_ENV === 'development'
 const config = {
+  // webpack4 require
+  // mode: process.env_NODE_ENV || 'production', // development || production
   target: 'web',
   entry: path.join(__dirname, '../client/client-entry.js'),
   output: {

@@ -6,9 +6,7 @@ const ExtractPlugin = require('extract-text-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const cdnConfig = require('../app.config').cdn
-
 const isDev = process.env.NODE_ENV === 'development'
-
 const defaultPluins = [
   new webpack.DefinePlugin({
     'process.env': {
@@ -20,7 +18,6 @@ const defaultPluins = [
   }),
   new VueClientPlugin()
 ]
-
 const devServer = {
   port: 8000,
   host: '0.0.0.0',
@@ -64,6 +61,7 @@ if (isDev) {
     devServer,
     plugins: defaultPluins.concat([
       new webpack.HotModuleReplacementPlugin(),
+      // webpack4 abandon NoEmitOnErrorsPlugin
       new webpack.NoEmitOnErrorsPlugin()
     ])
   })
@@ -97,8 +95,16 @@ if (isDev) {
         }
       ]
     },
+    // webpack4 replace CommonsChunkPlugin
+    // optimization: {
+    //   splitChunks: {
+    //     chuks: 'all'
+    //   },
+    //   runtimeChunk: true
+    // },
     plugins: defaultPluins.concat([
       new ExtractPlugin('styles.[contentHash:8].css'),
+      // webpack4 abandon CommonsChunkPlugin
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor'
       }),

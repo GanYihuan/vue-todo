@@ -4,9 +4,7 @@ const path = require('path')
 
 const cdnConfig = require('../app.config').cdn
 
-const {
-  ak, sk, bucket
-} = cdnConfig
+const { ak, sk, bucket } = cdnConfig
 
 const mac = new qiniu.auth.digest.Mac(ak, sk)
 
@@ -22,16 +20,22 @@ const doUpload = (key, file) => {
   const putPolicy = new qiniu.rs.PutPolicy(options)
   const uploadToken = putPolicy.uploadToken(mac)
   return new Promise((resolve, reject) => {
-    formUploader.putFile(uploadToken, key, file, putExtra, (err, body, info) => {
-      if (err) {
-        return reject(err)
+    formUploader.putFile(
+      uploadToken,
+      key,
+      file,
+      putExtra,
+      (err, body, info) => {
+        if (err) {
+          return reject(err)
+        }
+        if (info.statusCode === 200) {
+          resolve(body)
+        } else {
+          reject(body)
+        }
       }
-      if (info.statusCode === 200) {
-        resolve(body)
-      } else {
-        reject(body)
-      }
-    })
+    )
   })
 }
 

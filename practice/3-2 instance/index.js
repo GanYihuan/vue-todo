@@ -2,17 +2,17 @@ import Vue from 'vue'
 
 const app = new Vue({
   // el: '#root',
-  /* template 会渲染到 #root 里面 */
+  /* template render #root inside */
   template: '<div ref="div">{{text}} {{obj.a}}</div>',
   data: {
     text: 0,
     obj: {}
   },
   mounted() {
-    /* this: 相当于 app, app.a(), app. 就是 vue 实例 */
+    /* this: equal app, app.a(), app is vue instance */
     // this.a()
   }
-  /* watch 自动注销 */
+  /* watch Automatic logout */
   // watch: {
   //   text (newText, oldText) {
   //     console.log(`${newText} : ${oldText}`)
@@ -20,7 +20,7 @@ const app = new Vue({
   // }
 })
 
-/* 替代el */
+/* replace el: '#root', */
 app.$mount('#root')
 // app.text = 'text1'
 
@@ -28,7 +28,6 @@ let i = 0
 setInterval(() => {
   // app.$options.data.text += 1 /* useless */
   // app.$data.text += 1 /* usefull */
-
   i++
   /* 异步渲染, 值更新会放入一个异步队列里，一段时间后一次性渲染队列里全部值 */
   // app.text += 1
@@ -40,10 +39,10 @@ setInterval(() => {
   /* a = 5 -> 10 -> 15 ... */
   // app.obj.a = i
 
-  /* 强制组件渲染一次, 不建议使用 */
+  /* Force the component to render once, Not recommended for use */
   // app.$forceUpdate()
 
-  /* 设置值 */
+  /* set value */
   app.$set(app.obj, 'a', i)
   // app.$delete(app.obj, 'a', i)
 }, 1000)

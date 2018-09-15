@@ -2,11 +2,13 @@ import Vue from 'vue'
 
 const component = {
   model: {
-    /* 自定义 prop 名称 */
+    /* 自定义 prop 名称, value -> value1 */
     prop: 'value1',
+    /* 自定义 event 名称, input -> change */
     event: 'change'
   },
   // props: ['value'],
+  /* 自定义 prop 名称, value -> value1 */
   props: ['value1'],
   template: `
     <div>
@@ -17,6 +19,7 @@ const component = {
   methods: {
     handleInput(e) {
       // this.$emit('input', e.target.value)
+      /* 自定义 event 名称, input -> change */
       this.$emit('change', e.target.value)
     }
   }

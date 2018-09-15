@@ -1,8 +1,6 @@
 const path = require('path')
 const createVueLoaderOptions = require('./vue-loader.config')
-
 const isDev = process.env.NODE_ENV === 'development'
-
 const config = {
   target: 'web',
   entry: path.join(__dirname, '../client/client-entry.js'),

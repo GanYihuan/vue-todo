@@ -23,10 +23,7 @@ serverCompiler.watch({}, (err, stats) => {
   stats.errors.forEach(err => console.log(err))
   stats.warnings.forEach(warn => console.warn(err))
 
-  const bundlePath = path.join(
-    serverConfig.output.path,
-    'server-entry.js'
-  )
+  const bundlePath = path.join(serverConfig.output.path, 'server-entry.js')
   delete require.cache[bundlePath]
   bundle = require('../../server-build/server-entry.js').default
   // function (module, exports, require)
@@ -47,7 +44,7 @@ serverCompiler.watch({}, (err, stats) => {
   console.log('new bundle generated')
 })
 
-const handleSSR = async (ctx) => {
+const handleSSR = async ctx => {
   if (!bundle) {
     ctx.body = '你等一会，别着急......'
     return
@@ -63,11 +60,10 @@ const handleSSR = async (ctx) => {
     'utf-8'
   )
 
-  const renderer = VueServerRenderer
-    .createRenderer({
-      inject: false,
-      clientManifest
-    })
+  const renderer = VueServerRenderer.createRenderer({
+    inject: false,
+    clientManifest
+  })
 
   await serverRender(ctx, renderer, template, bundle)
 }

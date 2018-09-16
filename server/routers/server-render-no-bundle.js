@@ -15,9 +15,7 @@ module.exports = async (ctx, renderer, template, bundle) => {
 
     const appString = await renderer.renderToString(app, context)
 
-    const {
-      title
-    } = context.meta.inject()
+    const { title } = context.meta.inject()
 
     const html = ejs.render(template, {
       appString,

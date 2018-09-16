@@ -7,12 +7,10 @@ const bundle = require('../../server-build/server-entry.js').default
 const serverRender = require('./server-render-no-bundle')
 
 const clientManifest = require('../../public/vue-ssr-client-manifest.json')
-const renderer = VueServerRender.createRenderer(
-  {
-    inject: false,
-    clientManifest
-  }
-)
+const renderer = VueServerRender.createRenderer({
+  inject: false,
+  clientManifest
+})
 
 const template = fs.readFileSync(
   path.join(__dirname, '../server.template.ejs'),
@@ -21,7 +19,7 @@ const template = fs.readFileSync(
 
 const pageRouter = new Router()
 
-pageRouter.get('*', async (ctx) => {
+pageRouter.get('*', async ctx => {
   await serverRender(ctx, renderer, template, bundle)
 })
 

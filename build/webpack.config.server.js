@@ -3,6 +3,7 @@ const ExtractPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
+// 打包不会有 js 输出
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
 
 let config
@@ -22,6 +23,7 @@ if (isDev) {
 }
 
 config = merge(baseConfig, {
+  // 执行环境
   target: 'node',
   entry: path.join(__dirname, '../client/server-entry.js'),
   // 出错在哪一行
@@ -33,7 +35,7 @@ config = merge(baseConfig, {
     filename: 'server-entry.js',
     path: path.join(__dirname, '../server-build')
   },
-  // 不要打包指定文件
+  // 不要打包指定的文件
   externals: Object.keys(require('../package.json').dependencies),
   module: {
     rules: [

@@ -26,6 +26,7 @@ app.use(
 
 const isDev = process.env.NODE_ENV === 'development'
 
+// koa 中间键, 记录请求，返回信息
 app.use(async (ctx, next) => {
   try {
     console.log(`request with path ${ctx.path}`)

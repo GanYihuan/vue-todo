@@ -181,18 +181,18 @@ npm i babel-preset-stage-1 -D
 
 ## 5-1 开发时服务端渲染的配置和原理
 
-- 生成一个 json 文件, 处理逻辑
+- **webpack.config.server.js** 生成一个 json 文件, 处理逻辑
 
 ```console
 npm i vue-server-renderer -S
 ```
 
-- webpack.config.server.js
-
 ## 5-2 使用koa实现node server
 
-> ?
-- npm i koa-router -S
-- npm i axios -S
-- npm i memory-fs -D
-- npm i ejs -S
+```console
+npm i koa-router -S
+npm i koa -S
+npm i axios -S
+npm i ejs -S
+npm i memory-fs -D
+```

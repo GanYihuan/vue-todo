@@ -2,9 +2,7 @@ const path = require('path')
 const HTMLPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const ExtractPlugin = require('extract-text-webpack-plugin')
-
 const isDev = process.env.NODE_ENV === 'development'
-
 const config = {
   target: 'web',
   entry: path.join(__dirname, 'src/index.js'),

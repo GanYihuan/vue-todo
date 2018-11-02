@@ -6,9 +6,7 @@ const ExtractPlugin = require('extract-text-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const cdnConfig = require('../app.config').cdn
-
 const isDev = process.env.NODE_ENV === 'development'
-
 const defaultPluins = [
   new webpack.DefinePlugin({
     'process.env': {
@@ -112,7 +110,7 @@ if (isDev) {
 
 config.resolve = {
   alias: {
-    'model': path.join(__dirname, '../client/model/client-model.js')
+    model: path.join(__dirname, '../client/model/client-model.js')
   }
 }
 

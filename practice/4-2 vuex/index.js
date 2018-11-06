@@ -1,5 +1,6 @@
 ﻿import Vue from 'vue'
 import Vuex from 'vuex'
+
 import App from './app.vue'
 import createStore from './store/store'
 import './assets/styles/global.styl'

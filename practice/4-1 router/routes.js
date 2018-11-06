@@ -15,9 +15,7 @@ export default [
     /* transfer router parameter ':id' to <RankList/>, <RankList/> can use props get :id, decoupling $route */
     props: true,
     /* pass route params id=456 */
-    // props: {
-    //   id: '456'
-    // },
+    // props: { id: '456' },
     // props: (route) => ({ id: route.query.b }),
     /* router-view add inside name=a */
     // components: {

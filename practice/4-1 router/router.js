@@ -9,9 +9,9 @@ export default () => {
     mode: 'history',
     /* 地址栏自动添加 localhost:8000/base/ 前缀 */
     base: '/base/',
-    /* 路由含有 /login 就能 <router-link/> 添加 className=active-link */
+    /* 含有激活路由时, <router-link/> 添加 className=active-link */
     linkActiveClass: 'active-link',
-    /* 路由完全匹配到 /login/exact 就能 <router-link/> 添加 className=exact-active-link */
+    /* 激活路由完全匹配 /login/exact 就能 <router-link/> 添加 className=exact-active-link */
     linkExactActiveClass: 'exact-active-link',
     /* 路由跳转时页面滚动到指定位置 */
     scrollBehavior(to, from, savedPosition) {

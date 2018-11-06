@@ -26,24 +26,25 @@ const component = {
     }
   }
 }
-// const CompVue = Vue.extend(component)
-// new CompVue({
-//   el: '#root',
-//   /* propsData: 传递数据给子组件 */
-//   propsData: {
-//     propOne: 'xxx'
-//   },
-//   /* 覆盖子组件 data */
-//   data() {
-//     return {
-//       text: '123'
-//     }
-//   },
-//   /* component 子组件 mounted 先被调用, 后调用自身 mounted */
-//   mounted () {
-//     console.log('CompVue mounted')
-//   }
-// })
+
+const CompVue = Vue.extend(component)
+new CompVue({
+  el: '#root',
+  /* propsData: 传递数据给子组件 */
+  propsData: {
+    propOne: 'xxx'
+  },
+  /* 覆盖子组件 data */
+  data() {
+    return {
+      text: '123'
+    }
+  },
+  /* extend() 组件 mounted 先被调用, 后调用自身 mounted */
+  mounted() {
+    console.log('CompVue mounted')
+  }
+})
 
 const componet2 = {
   /* 无效 */

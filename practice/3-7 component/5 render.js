@@ -4,7 +4,7 @@ const component = {
   props: ['props1'],
   name: 'comp',
   // template: `
-  //   <div :style="style">
+  //   <div :style="style" @click="click">
   //     <slot></slot>
   //   </div>
   // `,
@@ -13,13 +13,12 @@ const component = {
     return createElement(
       'div',
       {
-        style: this.style
-        // ,
-        // on: {
-        //   click: () => {
-        //     this.$emit('click')
-        //   }
-        // }
+        style: this.style,
+        on: {
+          click: () => {
+            this.$emit('click')
+          }
+        }
       },
       [this.$slots.default, this.$slots.header, this.props1]
     )

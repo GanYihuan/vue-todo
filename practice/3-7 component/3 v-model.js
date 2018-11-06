@@ -4,6 +4,7 @@ const component = {
   model: {
     /* 自定义 prop 名称 */
     prop: 'value1',
+    /* 自定义事件名称 */
     event: 'change'
   },
   // props: ['value'],

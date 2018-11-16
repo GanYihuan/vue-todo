@@ -11,14 +11,15 @@ new Vue({
       // 只监控一次
       <div v-once>Text: {{text}}</div>
       <div>Text: {{text}}</div>
-      // 设置 display: none 与 display: show
+      // 加类名 display: none 与 display: show
       <div v-show="active">Text</div>
-      // 删除节点
+      // 增删节点
       <div v-if="text === 0" @click="clicked">Else Text: {{text}}</div>
       <div v-else-if="text > 2">else content > 2</div>
       <div v-else>else content</div>
       <div v-text="html"></div>
       <div v-html="html"></div>
+      // v-model 默认用在 input 标签上
       <input type="text" v-model.trim="text"/>
       <input type="text" v-model.number="text"/>
       <input type="text" v-model.lazy="text"/>

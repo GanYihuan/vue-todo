@@ -3,16 +3,17 @@ import Vue from 'vue'
 /*
 生命周期函数是某个时间点执行的函数
 vm: vue实例
-new Vue()
 */
 const app = new Vue({
-  // template: '<div>{{text}}</div>',
-  data: {
-    text: 0
+  data() {
+    return {
+      test: 'hello vue'
+    }
   },
   /* init event & lifecycle */
   /*
-  初始化, dom 没完成, 不要修改数据
+  初始化, dom 没完成
+  不要修改数据
   服务端渲染调用
   */
   beforeCreate() {
@@ -20,7 +21,8 @@ const app = new Vue({
   },
   /* init injections & reactivity */
   /*
-  初始化, dom 没完成, 能改数据, 数据不会被监控
+  初始化, dom 没完成
+  能改数据, 数据不会被监控
   服务端渲染调用
   */
   created() {
@@ -34,12 +36,13 @@ const app = new Vue({
   /* Y: compile template as render function */
   /* N: compile outHTML(el) as template */
   /*
+  beforeMount: 数据和模板即将结合挂载到页面中之前一瞬间
   dom 相关
-  服务端渲染不调用, 服务端渲染没有 dom
-  节点为: <div id="root"></div>
+  服务端渲染不调用(服务端渲染没有 dom)
   */
-  /* beforeMount: 数据和模板即将结合挂载到页面中之前一瞬间 */
   beforeMount() {
+    /* 没数据 */
+    /* <div id="app"></div> */
     console.log(this.$el, 'beforeMount')
   },
   /*
@@ -59,25 +62,26 @@ const app = new Vue({
     return h('div', {}, err.stack)
   },
   /* 会向上冒泡, 正式的环境中使用, 收集错误 */
-  errorCaptured() {},
+  errorCaptured() { },
   /* create vm.$el and replace 'el' with it */
   /*
   dom 相关
   服务端渲染不调用, 服务端渲染没有 dom
   mounted 之后, 要外界触发才执行生命周期
-  节点为: <div>0</div>, 经过 render 改变了节点
+  经过 render 节点变为: <div>hello world</div>
   */
   mounted() {
     /* The component is called when it is mounted to the dom */
+    /* 有数据 */
+    /* <div>hello world</div> */
     console.log(this.$el, 'mounted')
   },
-  /* 数据更新才执行 */
+  /* when data changes */
   beforeUpdate() {
     console.log(this, 'beforeUpdate')
   },
   /*
   virtual DMO re-render and patch
-  数据更新才执行
   */
   updated() {
     /* Data updates are invoked */
@@ -93,7 +97,6 @@ const app = new Vue({
   },
   /*
   when vm.$destory() is called
-  销毁组件
   */
   beforeDestroy() {
     console.log(this, 'beforeDestroy')

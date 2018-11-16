@@ -47,8 +47,9 @@ new Vue({
     // firstName(newName, oldName) {
     //   this.fullName = newName + ' ' + this.lastName
     // }
-    // obj: {}
+    // 给 obj 赋值时才能监听到
     'obj.a': {
+      // 执行
       handler() {
         console.log('obj.a changed')
         /* 不推荐改原来的值, 应该监听然后处理成另外一个值 */

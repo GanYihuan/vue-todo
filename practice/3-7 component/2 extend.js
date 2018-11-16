@@ -34,7 +34,7 @@ new CompVue({
   propsData: {
     propOne: 'xxx'
   },
-  /* 覆盖子组件 data */
+  /* 覆盖 extend() 组件 data */
   data() {
     return {
       text: '123'
@@ -47,9 +47,9 @@ new CompVue({
 })
 
 const componet2 = {
-  /* 无效 */
   /* new Vue 的时候才能指定 parent */
   // parent: parent,
+  // 继承 component 组件
   extends: component,
   /* 覆盖子组件 data */
   data() {
@@ -60,8 +60,7 @@ const componet2 = {
   /* 子组件 mounted 先被调用, 后调用自身 mounted */
   mounted() {
     console.log('component2 mounted')
-    /* new Vue (Root) */
-    console.log(this.$parent.$options.name)
+    console.log(this.$parent.$options.name) /* new Vue (Root) */
     /* 不推荐子组件修改父组件的值 */
     /* 谁调用我, 谁就是父组件 $parent, 这里是 new Vue (Root) */
     this.$parent.text = '12345'
@@ -87,9 +86,8 @@ new Vue({
   },
   /* 子组件 mounted 先被调用, 后调用自身 mounted */
   mounted() {
-    /* Parent */
     /* new Vue 的时候才能指定 parent */
-    console.log(this.$parent.$options.name)
+    console.log(this.$parent.$options.name) // parent
   },
   template: `
     <div>

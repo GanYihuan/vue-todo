@@ -3,7 +3,6 @@ import Vue from 'vue'
 const component = {
   props: {
     active: {
-      /* 必须传入数据 */
       required: true,
       type: Boolean,
       default: true,
@@ -13,10 +12,12 @@ const component = {
     },
     propOne: String
   },
-  /* data 使用函数来定义 */
+  /* child component data must function */
   data() {
     return {
-      text: 0
+      text: 0,
+      // 父级数据转化为子组件内部数据, 子级不能直接修改父级数据
+      propOned: this.propOne
     }
   },
   template: `
@@ -28,7 +29,6 @@ const component = {
   `,
   methods: {
     handleChange() {
-      // 抛出事件给父级, 单项数据流
       this.$emit('change')
     }
   }

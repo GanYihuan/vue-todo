@@ -80,30 +80,28 @@ const app = new Vue({
   beforeUpdate() {
     console.log(this, 'beforeUpdate')
   },
-  /*
-  virtual DMO re-render and patch
-  */
+  /* virtual DMO re-render and patch */
   updated() {
     /* Data updates are invoked */
     console.log(this, 'updated')
   },
-  /* keep-alive */
+  /*
+  当使用 keep-alive 时，App.vue 将附加组件激活
+  当页面重新显示的时候将运行
+  deactivated(){}, 与 activated 相反
+  */
   activated() {
     console.log(this, 'activated')
   },
-  /* keep-alive */
+  /* deactivated(){}, 与 activated 相反 */
   deactivated() {
     console.log(this, 'deactivated')
   },
-  /*
-  when vm.$destory() is called
-  */
+  /* when vm.$destory() is called */
   beforeDestroy() {
     console.log(this, 'beforeDestroy')
   },
-  /*
-  teardown watches, child components and events listeners
-  */
+  /* teardown watches, child components and events listeners */
   destroyed() {
     /* Called when a component is destroyed */
     console.log(this, 'destroyed')
@@ -112,7 +110,7 @@ const app = new Vue({
 
 app.$mount('#root')
 // setInterval(() => {
-//   数据更新
+/* 数据更新 */
 //   app.text = app.text += 1
 // }, 1000)
 

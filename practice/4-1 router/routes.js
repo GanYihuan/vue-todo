@@ -33,7 +33,7 @@ export default [
     /* 保存路由信息, 有利于 SEO */
     meta: {
       title: 'this is app',
-      description: 'asdasd'
+      description: '123'
     },
     /* before enter route invoked */
     beforeEnter(to, from, next) {

@@ -1,6 +1,5 @@
 ﻿import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import createRouter from './config/router'
 import App from './app.vue'
 import './assets/styles/global.styl'
@@ -12,12 +11,12 @@ const router = createRouter()
 router.beforeEach((to, from, next) => {
   console.log('1. before each invoked')
   next()
-  // if (to.fullPath === '/app') {
-  /* route jump, can write router-view define attribute */
-  //   next({ path: '/login' })
-  // } else {
-  //   next()
-  // }
+  if (to.fullPath === '/app') {
+    // route jump, can write router-view define attribute
+    next({ path: '/login' })
+  } else {
+    next()
+  }
 })
 
 /* Routing guard */

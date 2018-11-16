@@ -18,9 +18,9 @@ export default {
 	/* Routing guard */
 	beforeRouteLeave(to, from, next) {
 		console.log('todo leave enter')
-		// if (global.comfirm('are you sure leave this page?')) {
-		//   next()
-		// }
+		if (global.comfirm('are you sure leave this page?')) {
+		  next()
+		}
 		next()
 	}
 }

@@ -10,10 +10,10 @@ export default {
 		console.log(this.$store)
 		let i = 1
 		/* dispatch: invoked vuex/actions */
-		this.$store.dispatch(updateCountAsync, {
-			num: 5,
-			time: 2000
-		})
+		// this.$store.dispatch(updateCountAsync, {
+		// 	num: 5,
+		// 	time: 2000
+		// })
 		this.updateCountAsync({
 			num: 5,
 			time: 2000
@@ -22,10 +22,10 @@ export default {
 		this['a/add']()
 		this['b/testAction']()
 		this.testAction()
-		this.$store.state.count = 3
+		// this.$store.state.count = 3
 		setInterval(() => {
 			/* commit: invoked vuex/mutations */
-			this.$store.commit('updateCount', i++)
+			// this.$store.commit('updateCount', i++)
 			this.updateCount({
 				num: i++,
 				num2: 2
@@ -49,7 +49,7 @@ export default {
 		...mapState({
 			// counter: 'count',
 			counter: state => state.count,
-			/* Call module */
+			/* Call difference module */
 			textA: state => state.a.text,
 			textC: state => state.c.text
 		}),

@@ -32,6 +32,7 @@ config = merge(baseConfig, {
     libraryTarget: 'commonjs2',
     // 不需要哈希
     filename: 'server-entry.js',
+    // 输出目录
     path: path.join(__dirname, '../server-build')
   },
   // 不要打包指定的文件

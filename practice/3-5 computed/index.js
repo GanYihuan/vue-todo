@@ -44,21 +44,21 @@ new Vue({
   },
   /* 监听到有变化才执行, 生成值, 不推荐改原来的值 */
   watch: {
-    // firstName(newName, oldName) {
-    //   this.fullName = newName + ' ' + this.lastName
-    // }
+    firstName(newName, oldName) {
+      this.fullName = newName + ' ' + this.lastName
+    },
     // 给 obj 赋值时才能监听到
     'obj.a': {
       // 执行
       handler() {
         console.log('obj.a changed')
         /* 不推荐改原来的值, 应该监听然后处理成另外一个值 */
-        // this.obj.a += 1
+        this.obj.a += 1
       },
       /* 立即执行 handler() */
-      immediate: true
+      immediate: true,
       /* 针对 obj:{}, 监听整个 obj，高性能开销 */
-      // deep: true
+      deep: true
     }
   },
   methods: {

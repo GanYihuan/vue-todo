@@ -29,6 +29,7 @@ const component = {
   `,
   methods: {
     handleChange() {
+      // 子级抛出事件给父级来修改父级数据, 单项数据流
       this.$emit('change')
     }
   }

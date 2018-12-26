@@ -78,13 +78,11 @@ new Vue({
   components: {
     Comp: componet2
   },
-  /* 覆盖 children component data */
   data() {
     return {
       text: 23333
     }
   },
-  /* 子组件 mounted 先被调用, 后调用自身 mounted */
   mounted() {
     /* new Vue 的时候才能指定 parent */
     console.log(this.$parent.$options.name) // parent

@@ -14,7 +14,7 @@ const app = new Vue({
   },
   /* watch 自动注销 */
   watch: {
-    text (newText, oldText) {
+    text(newText, oldText) {
       console.log(`${newText} : ${oldText}`)
     }
   }
@@ -48,7 +48,7 @@ console.log(app.$props) /* undefined */
 console.log(app.$el) /* <div>0</div> */
 console.log(app.$options) /* new Vue 传入的整个对象 */
 /* 下次有值改变时候渲染 */
-app.$options.render = (h) => {
+app.$options.render = h => {
   return h('div', {}, 'new render function')
 }
 console.log(app.$root === app) /* true */

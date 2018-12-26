@@ -30,7 +30,6 @@ new Vue({
   },
   methods: {
     handleClick() {
-      // eslint-disable-line
       console.log('clicked')
     },
     getJoinedArr(arr) {

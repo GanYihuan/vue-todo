@@ -62,7 +62,7 @@ const app = new Vue({
     return h('div', {}, err.stack)
   },
   /* 会向上冒泡, 正式的环境中使用, 收集错误 */
-  errorCaptured() { },
+  errorCaptured() {},
   /* create vm.$el and replace 'el' with it */
   /*
   dom 相关

@@ -15,14 +15,14 @@
 
 <script>
 export default {
-	/* Get routing parameters */
-	props: ['id'],
-	mounted() {
-		/* routes.js Setting props: true, Pass routing parameters :id */
-		/* Get routing parameters */
-		console.log(this.id)
-		/* Get routing information */
-		console.log(this.$route)
-	}
+  /* Get routing parameters */
+  props: ['id'],
+  mounted() {
+    /* routes.js Setting props: true, Pass routing parameters :id */
+    /* Get routing parameters */
+    console.log(this.id)
+    /* Get routing information */
+    console.log(this.$route)
+  }
 }
 </script>

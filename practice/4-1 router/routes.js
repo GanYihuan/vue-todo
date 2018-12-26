@@ -29,6 +29,7 @@ export default [
       import('../views/todo/todo.vue')
     },
     /* <router-link :to="{name: 'app'}">app</router-link> */
+    // 路由命名
     name: 'app',
     /* 保存路由信息, 有利于 SEO */
     meta: {

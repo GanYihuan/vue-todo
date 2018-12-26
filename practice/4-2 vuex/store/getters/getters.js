@@ -1,4 +1,4 @@
-/* simular computed */
+/* 数据计算  simular computed */
 export default {
   fullName(state) {
     return `${state.firstName} 123 ${state.lastName}`

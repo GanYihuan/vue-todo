@@ -1,3 +1,4 @@
+// 数据定义
 export default {
   count: 0,
   firstName: 'Jokcy',

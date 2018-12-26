@@ -88,6 +88,5 @@ export default () => {
       }
     )
   }
-
   return store
 }

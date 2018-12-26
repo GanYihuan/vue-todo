@@ -14,7 +14,7 @@ const app = new Vue({
   /*
   初始化, dom 没完成
   不要修改数据
-  服务端渲染调用
+  服务端渲染调用2
   */
   beforeCreate() {
     console.log(this.$el, 'beforeCreate') // undefined
@@ -32,9 +32,9 @@ const app = new Vue({
   el: '#root',
   /* N: when vm.$mount(el) is called */
   /* Y: has 'template' option? */
-  template: '<div>{{test}}</div>',
   /* Y: compile template as render function */
   /* N: compile outHTML(el) as template */
+  template: '<div>{{test}}</div>',
   /*
   beforeMount: 数据和模板即将结合挂载到页面中之前一瞬间
   dom 相关

@@ -18,6 +18,7 @@ export default {
       num: 5,
       time: 2000
     })
+    // invoked modules mutations
     this['a/updateText']('123')
     this['a/add']()
     this['b/testAction']()

@@ -7,6 +7,7 @@ import './assets/styles/global.styl'
 Vue.use(VueRouter)
 const router = createRouter()
 
+// 数据校验, 路由改变时触发
 /* Routing guard, data verify, route change will invoked */
 router.beforeEach((to, from, next) => {
   console.log('1. before each invoked')

@@ -56,7 +56,7 @@ export default () => {
           text: 2
         },
         actions: {
-          testAction({ commit }) {
+          testAction({ state, commit, rootState }) {
             /* {root:true}: global invoked vuex/mutation */
             commit('a/updateText', 'test text', { root: true })
           }

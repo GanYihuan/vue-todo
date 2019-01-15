@@ -8,7 +8,7 @@ const ChildComponent = {
     // $parent 只能拿到上一级里面的 value
     console.log(this.$parent.$options.name) // comp
     // 拿到所有父级
-    console.log(this.yeye, this.value) // 123
+    console.log(this.yeye, this.value) // 父组件
   }
 }
 
@@ -48,7 +48,7 @@ new Vue({
   el: '#root',
   data() {
     return {
-      value: '123'
+      value: '父组件'
     }
   },
   /* 下级组件注入, 不提供 react 属性, 像 data() */

@@ -4,7 +4,7 @@ const component = {
   model: {
     /* 自定义 prop 名称 value -> value1 */
     prop: 'value1',
-    /* 自定义事件名称 */
+    /* 自定义事件名称 input -> change */
     event: 'change'
   },
   // props: ['value'],
@@ -24,10 +24,10 @@ const component = {
 }
 
 new Vue({
+  el: '#root',
   components: {
     CompOne: component
   },
-  el: '#root',
   data() {
     return {
       value: '123'

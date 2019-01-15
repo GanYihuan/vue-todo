@@ -14,7 +14,7 @@ const app = new Vue({
   /*
   初始化, dom 没完成
   不要修改数据
-  服务端渲染调用2
+  服务端渲染调用
   */
   beforeCreate() {
     console.log(this.$el, 'beforeCreate') // undefined

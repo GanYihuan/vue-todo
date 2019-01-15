@@ -34,30 +34,32 @@ new CompVue({
   propsData: {
     propOne: 'xxx'
   },
-  /* 覆盖 extend() 组件 data */
+  /* 覆盖父组件 data */
   data() {
     return {
       text: '123'
     }
   },
-  /* extend() 组件 mounted 先被调用, 后调用自身 mounted */
+  /* 父组件 mounted 先被调用, 后调用自身 mounted */
   mounted() {
     console.log('CompVue mounted')
   }
 })
+
+// ----------------------------------------------------------
 
 const componet2 = {
   /* new Vue 的时候才能指定 parent */
   // parent: parent,
   // 继承 component 组件
   extends: component,
-  /* 覆盖子组件 data */
+  /* 覆盖父组件 data */
   data() {
     return {
       text: 1
     }
   },
-  /* 子组件 mounted 先被调用, 后调用自身 mounted */
+  /* 父组件 mounted 先被调用, 后调用自身 mounted */
   mounted() {
     console.log('component2 mounted')
     console.log(this.$parent.$options.name) /* new Vue (Root) */

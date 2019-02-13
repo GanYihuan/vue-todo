@@ -43,22 +43,22 @@ setInterval(() => {
   app.$delete(app.obj, 'a', i) /* 删除值 */
 }, 1000)
 
-console.log(app.$data) /* text, object */
+console.log(app.$el) /* <div>0</div> 挂载的html 节点 */
 console.log(app.$props) /* undefined */
-console.log(app.$el) /* <div>0</div> html 节点 */
+console.log(app.$data) /* text, object */
 console.log(app.$options) /* new Vue 传入的整个对象 */
 /* 下次有值改变时候渲染 */
 app.$options.render = h => {
   return h('div', {}, 'new render function')
 }
 console.log(app.$root === app) /* true */
-console.log(app.$children)
+console.log(app.$children) /* <item><div></div></item> $children: div */
 console.log(app.$slots) /* 插槽 */
 console.log(app.$scopedSlots) /* 插槽 */
 console.log(app.$refs) /* 定位组件, 节点 */
-console.log(app.$isServer) // 服务端渲染
+console.log(app.$isServer) /* 判断是否是服务端渲染 */
 
-/* app.$watch 要手动注销, 相当于 watch(){}, 差别在于是否能主动注销, 该方法要手动注销 */
+/* app.$watch 相当于 watch(){}, 差别在于是否能主动注销, 该方法要手动注销 */
 const unWatch = app.$watch('text', (newText, oldText) => {
   console.log(`$(newText) : $(oldText)`)
 })

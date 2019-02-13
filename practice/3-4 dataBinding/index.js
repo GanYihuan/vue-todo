@@ -19,10 +19,9 @@ new Vue({
       isActive: false,
       styles: {
         color: 'red',
-        appearance: 'none'
       },
       styles2: {
-        color: 'black'
+        color: 'blue'
       },
       html: '<span>123</span>',
       arr: [1, 2, 3]

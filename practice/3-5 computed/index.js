@@ -51,7 +51,7 @@ new Vue({
   /* 监听到有变化才执行, 生成值, 不推荐改原来的值 */
   watch: {
     firstName(newName, oldName) {
-      this.fullName = newName + ' ' + this.lastName
+      this.fullName = newName + ' ' + oldName
     },
     // 给 obj 赋值时才能监听到
     'obj.a': {

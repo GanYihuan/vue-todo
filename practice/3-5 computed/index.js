@@ -26,15 +26,13 @@ new Vue({
       }
     }
   },
-  /* 能缓存, 生成值 */
-  computed: {
+  computed: { // 能缓存, 生成值
     name: {
       get() {
         console.log('new name')
         return `${this.firstName} ${this.lastName}`
       },
-      /* 不推荐改原来的值 */
-      set(name) {
+      set(name) { // 不推荐改原来的值
         const names = name.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
@@ -48,23 +46,17 @@ new Vue({
       return `${this.firstName} ${this.lastName}`
     }
   },
-  /* 监听到有变化才执行, 生成值, 不推荐改原来的值 */
-  watch: {
+  watch: { // 监听到有变化才执行, 生成值, 不推荐改原来的值
     firstName(newName, oldName) {
       this.fullName = newName + ' ' + oldName
     },
-    // 给 obj 赋值时才能监听到
-    'obj.a': {
-      // 执行
-      handler() {
+    'obj.a': { // 给 obj 赋值时才能监听到
+      handler() { // 执行
         console.log('obj.a changed')
-        /* 不推荐改原来的值, 应该监听然后处理成另外一个值 */
-        this.obj.a += 1
+        this.obj.a += 1 // 不推荐改原来的值, 应该监听然后处理成另外一个值
       },
-      /* 立即执行 handler() */
-      immediate: true,
-      /* 针对 obj:{}, 监听整个 obj，高性能开销 */
-      deep: true
+      immediate: true, // 立即执行 handler()
+      deep: true // 针对 obj:{}, 监听整个 obj，高性能开销
     }
   }
 })

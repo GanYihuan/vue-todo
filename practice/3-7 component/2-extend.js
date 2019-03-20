@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
-// 父组件
-const component = {
+const component = { // 父组件
   props: {
     active: Boolean,
     propOne: String
@@ -27,23 +26,18 @@ const component = {
     }
   }
 }
-// 子组件继承父组件
-const CompVue = Vue.extend(component)
-// 子组件
-new CompVue({
+const CompVue = Vue.extend(component) // 子组件继承父组件
+new CompVue({ // 子组件
   el: '#root',
-  /* propsData: 传递数据给父组件 */
-  propsData: {
+  propsData: { // propsData: 子组件传递数据给父组件
     propOne: 'xxx'
   },
-  /* 覆盖父组件 data */
-  data() {
+  data() { // 覆盖父组件 data
     return {
       text: '123'
     }
   },
-  /* 父组件 mounted 先被调用, 后调用自身 mounted */
-  mounted() {
+  mounted() { // 父组件 mounted 先被调用, 后调用自身 mounted
     console.log('CompVue mounted')
   }
 })
@@ -51,10 +45,8 @@ new CompVue({
 // ----------------------------------------------------------
 
 const componet2 = {
-  /* new Vue 的时候才能指定 parent */
-  // parent: parent,
-  // 继承 component 组件
-  extends: component,
+  // parent: parent, // new Vue 的时候才能指定 parent
+  extends: component, // 继承 component 组件
   data() {
     return {
       text: 1
@@ -62,20 +54,17 @@ const componet2 = {
   },
   mounted() {
     console.log('component2 mounted')
-    console.log(this.$parent.$options.name) /* Root */
+    console.log(this.$parent.$options.name) // Root
     console.log(this.$parent.text) /* 23333 */
-    /* 谁调用我, 谁就是父组件 $parent, 这里是 new Vue (Root) */
-    /* 不推荐子组件修改父组件的值 */
-    this.$parent.text = '12345'
+    this.$parent.text = '12345' // 谁调用我, 谁就是父组件 $parent 不推荐子组件修改父组件的值
   }
 }
 
 const parent = new Vue({
   name: 'parent'
 })
-
 new Vue({
-  parent: parent,
+  parent: parent, // 继承父组件
   name: 'Root',
   el: '#root',
   components: {
@@ -87,7 +76,6 @@ new Vue({
     }
   },
   mounted() {
-    /* new Vue 的时候才能指定 parent */
     console.log(this.$parent.$options.name) // parent
   },
   template: `

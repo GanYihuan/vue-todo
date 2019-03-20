@@ -12,12 +12,10 @@ const component = {
     },
     propOne: String
   },
-  /* child component data must function */
-  data() {
+  data() { // child component data must function
     return {
       text: 0,
-      // 父级数据转化为子组件内部数据, 子级不能直接修改父级数据
-      propOned: this.propOne
+      propOned: this.propOne // 父级数据转化为子组件内部数据, 子级不能直接修改父级数据
     }
   },
   template: `
@@ -29,8 +27,7 @@ const component = {
   `,
   methods: {
     handleChange() {
-      // 子级抛出事件给父级来修改父级数据, 单项数据流
-      this.$emit('change')
+      this.$emit('change') // 子级抛出事件给父级来修改父级数据, 单项数据流
     }
   }
 }

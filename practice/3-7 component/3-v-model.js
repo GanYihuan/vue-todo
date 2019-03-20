@@ -2,13 +2,13 @@ import Vue from 'vue'
 
 const component = {
   model: {
-    /* 自定义 prop 名称 value -> value1 */
-    prop: 'value1',
-    /* 自定义事件名称 input -> change */
-    event: 'change'
+    prop: 'value1', // 自定义 prop 名称 value -> value1
+    event: 'change' // 自定义事件名称 input -> change
   },
-  // props: ['value'],
-  props: ['value1'],
+  // props: { 'value' },
+  props: {
+    'value1'
+  },
   template: `
     <div>
       <!-- <input type="text" @input="handleInput" :value="value"> -->

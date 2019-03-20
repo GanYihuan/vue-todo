@@ -1,18 +1,17 @@
 import Vue from 'vue'
 
-const ChildComponent = {
-  template: '<div>child component: {{data.value}}</div>',
-  /* 上级 provide */
-  inject: ['yeye', 'data'],
+const ChildComponent = { // 子组件
+  template: '<div>child component: {{value}}</div>', // 爷爷组件
+  // inject: ['yeye', 'data'],
+  inject: ['yeye', 'value'], // 拿到所有父级
   mounted() {
     // $parent 只能拿到上一级里面的 value
     console.log(this.$parent.$options.name) // comp
-    // 拿到所有父级
-    console.log(this.yeye, this.value) // 父组件
+    console.log(this.yeye, this.value) // 爷爷组件
   }
 }
 
-const component = {
+const component = { // 父组件
   name: 'comp',
   components: {
     ChildComponent
@@ -41,21 +40,19 @@ const component = {
   }
 }
 
-new Vue({
+new Vue({ // 爷爷组件
   components: {
     CompOne: component
   },
   el: '#root',
   data() {
     return {
-      value: '父组件'
+      value: '爷爷组件'
     }
   },
-  /* 下级组件注入, 不提供 react 属性, 像 data() */
-  provide() {
+  provide() { // 下级组件注入, 不提供 react 属性, 像 data()
+    // 不推荐用 defineProperty() 提供 react 属性, 使 value 改变下级对应改变
     // const data = {}
-    /* 不推荐用 defineProperty() */
-    /* 提供 react 属性, 使 value 改变下级对应改变 */
     // Object.defineProperty(data, 'value', {
     //   get: () => this.value,
     //   enumerable: true
@@ -67,16 +64,14 @@ new Vue({
     }
   },
   mounted() {
-    console.log(this.$refs.comp.value) /* component value */
+    console.log(this.$refs.comp.value) // component value
   },
   template: `
     <div>
       <comp-one ref="comp">
         <span slot="header">this is header</span>
         <span slot="footer">this is footer</span>
-        // slot-scope="props": 调用子组件 slot 的属性
-        // props.value: 子组件的 slot 的 value
-        <span slot="content" slot-scope="props" ref="span">{{props.value}} {{value}}</span>
+        <span slot="content" slot-scope="props" ref="span">{{props.value}} {{value}}</span> // slot-scope="props": 调用子组件 slot 的属性 value
       </comp-one>
       <input type="text" v-model="value" />
     </div>

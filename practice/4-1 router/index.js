@@ -7,14 +7,11 @@ import './assets/styles/global.styl'
 Vue.use(VueRouter)
 const router = createRouter()
 
-// 数据校验, 路由改变时触发
-/* Routing guard, data verify, route change will invoked */
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => { // 数据校验, 路由改变时触发
   console.log('1. before each invoked')
   next()
   if (to.fullPath === '/app') {
-    // route jump, can write router-view define attribute
-    next({ path: '/login' })
+    next({ path: '/login' }) // route jump, can write router-view define attribute
   } else {
     next()
   }
@@ -31,8 +28,7 @@ router.beforeResolve((to, from, next) => {
   next()
 })
 
-/* Routing guard, trigger after jump */
-router.afterEach((to, from) => {
+router.afterEach((to, from) => { // 路由跳转后触发
   console.log('5. after each invoked')
 })
 

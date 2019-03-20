@@ -4,23 +4,17 @@ new Vue({
   el: '#root',
   template: `
     <div>
-      // 不解析结果
-      <div v-pre>Text: {{text}}</div>
-      // 基本用不到
-      <div v-cloak>Text: {{text}}</div>
-      // 只监控一次
-      <div v-once>Text: {{text}}</div>
+      <div v-pre>Text: {{text}}</div> // 不解析结果
+      <div v-cloak>Text: {{text}}</div> // 基本用不到
+      <div v-once>Text: {{text}}</div> // 只监控一次
       <div>Text: {{text}}</div>
-      // 加类名 display: none 与 display: show
-      <div v-show="active">Text</div>
-      // 增删节点
-      <div v-if="text === 0" @click="clicked">Else Text: {{text}}</div>
+      <div v-show="active">Text</div> // 加类名 display: none 与 display: show
+      <div v-if="text === 0" @click="clicked">Else Text: {{text}}</div> // 增删节点
       <div v-else-if="text > 2">else content > 2</div>
       <div v-else>else content</div>
       <div v-text="html"></div>
       <div v-html="html"></div>
-      // v-model 默认用在 input 标签上
-      <input type="text" v-model.trim="text"/>
+      <input type="text" v-model.trim="text"/> // v-model 默认用在 input 标签上
       <input type="text" v-model.number="text"/>
       <input type="text" v-model.lazy="text"/>
       <input type="checkbox" v-model="active"/>

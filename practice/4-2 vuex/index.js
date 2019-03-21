@@ -5,44 +5,36 @@ import App from './app.vue'
 import createStore from './store/store'
 import './assets/styles/global.styl'
 
-/* How to use the plugin, Allow insertion router into new Vue */
-Vue.use(Vuex)
+Vue.use(Vuex) // How to use the plugin, Allow insertion router into new Vue
 
 const store = createStore()
 
-/* dynamic regist module */
-store.registerModule('c', {
+store.registerModule('c', { // dynamic regist module
   state: {
     text: 3
   }
 })
-/* dynamic unbinding module */
-store.unregisterModule('c', {
+store.unregisterModule('c', { // dynamic unbinding module
   state: {
     text: 3
   }
 })
 
-/* when state.count change, (newCount) will invoked, simular getters */
-store.watch(
+store.watch( // when state.count change, (newCount) will invoked, simular getters
   state => state.count + 1,
   newCount => {
     console.log('new count watched:', newCount)
   }
 )
 
-/* mutation invoked */
-store.subscribe((mutation, state) => {
+store.subscribe((mutation, state) => { // mutation invoked
   console.log(mutation.type)
-  /* payload: mutation received param */
-  console.log(mutation.payload)
+  console.log(mutation.payload) // payload: mutation received param
 })
 
-/* actions invoked */
-store.subscribeAction((action, state) => {
+store.subscribeAction((action, state) => { // actions invoked
   console.log(action.type)
-  /* payload: actions received param */
-  console.log(action.payload)
+  console.log(action.payload) // payload: actions received param
 })
 
 new Vue({

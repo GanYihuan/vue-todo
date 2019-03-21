@@ -82,7 +82,7 @@ export default {
         commit('endLoading')
       })
   },
-  deleteAllCompleted({ commit, state }) {
+  deleteAllCompleted({ commit, state }) { // async modify state
     commit('startLoading')
     const ids = state.todos.filter(t => t.completed).map(t => t.id)
     model

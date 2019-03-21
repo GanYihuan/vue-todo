@@ -4,8 +4,7 @@ import getters from './getters/getters'
 import mutations from './mutations/mutations'
 import actions from './actions/actions'
 
-/* External cannot modify data, Can only be modified by mutation, Development environment use */
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development' // External cannot modify data, Can only be modified by mutation, Development environment use
 
 export default () => {
   const store = new Vuex.Store({
@@ -14,24 +13,19 @@ export default () => {
     mutations,
     getters,
     actions,
-    /* define vuex plugin */
-    plugins: [
+    plugins: [ // define vuex plugin
       store => {
         console.log('my plugin invoked')
       }
     ],
-    /* Module function */
-    modules: {
-      /* Modules have different scopes */
+    modules: { // Module function, Modules have different scopes
       a: {
-        /* Can write the same mutation */
-        namespaced: true,
+        namespaced: true, // Can write the same mutation
         state: {
           text: 1
         },
         getters: {
-          /* rootState global state */
-          textPlus(state, getters, rootState) {
+          textPlus(state, getters, rootState) { // rootState: global state
             return state.text + rootState.b.text
           }
         },
@@ -43,29 +37,24 @@ export default () => {
         },
         actions: {
           add({ state, commit, rootState }) {
-            /* {root:true}: global invoked vuex/mutation */
-            commit('updateCount', { num: 56789 }, { root: true })
+            commit('updateCount', { num: 56789 }, { root: true }) // {root:true}: global invoked vuex/mutation
           }
         }
       },
-      /* Modules have different scopes */
       b: {
-        /* Can write the same mutation */
         namespaced: true,
         state: {
           text: 2
         },
         actions: {
           testAction({ state, commit, rootState }) {
-            /* {root:true}: global invoked vuex/mutation */
             commit('a/updateText', 'test text', { root: true })
           }
         }
       }
     }
   })
-  /* vuex Hot replacement function */
-  if (module.hot) {
+  if (module.hot) { // vuex Hot replacement function
     module.hot.accept(
       [
         './state/state',
@@ -78,7 +67,6 @@ export default () => {
         const newMutations = require('./mutations/mutations').default
         const newActions = require('./actions/actions').default
         const newGetters = require('./getters/getters').default
-
         store.hotUpdate({
           state: newState,
           mutations: newMutations,

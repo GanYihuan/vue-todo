@@ -1,7 +1,5 @@
-/* sync modify state */
-export default {
-  // state: 修改数据, { num, num2 } 参数对象
-  updateCount(state, { num, num2 }) {
+export default { // sync modify state
+  updateCount(state, { num, num2 }) { // state: 修改数据, { num, num2 } 参数对象
     console.log(num2)
     state.count = num
   },

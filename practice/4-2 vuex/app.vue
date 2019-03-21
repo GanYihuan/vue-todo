@@ -6,11 +6,9 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   mounted() {
     /* routes.js Setting props: true, Pass routing parameters :id */
-    /* get vuex store */
-    console.log(this.$store)
+    console.log(this.$store) // get vuex store
     let i = 1
-    /* dispatch: invoked vuex/actions */
-    // this.$store.dispatch(updateCountAsync, {
+    // this.$store.dispatch(updateCountAsync, { // dispatch: invoked vuex/actions
     //  num: 5,
     //  time: 2000
     // })
@@ -18,15 +16,13 @@ export default {
       num: 5,
       time: 2000
     })
-    // invoked modules mutations
-    this['a/updateText']('123')
+    this['a/updateText']('123') // invoked modules mutations
     this['a/add']()
     this['b/testAction']()
     this.testAction()
     // this.$store.state.count = 3
     setInterval(() => {
-      /* commit: invoked vuex/mutations */
-      // this.$store.commit('updateCount', i++)
+      // this.$store.commit('updateCount', i++) // commit: invoked vuex/mutations
       this.updateCount({
         num: i++,
         num2: 2
@@ -44,28 +40,22 @@ export default {
     }
   },
   computed: {
-    /* Use state data inside vuex */
-    // ...mapState(['loading']),
-    /* get vuex/state */
-    ...mapState({
+    // ...mapState(['loading']), // Use state data inside vuex
+    ...mapState({ // get vuex/state
       // counter: 'count',
       counter: state => state.count,
-      /* Call difference module */
-      textA: state => state.a.text,
+      textA: state => state.a.text, // Call difference module
       textC: state => state.c.text
     }),
-    /* get vuex/getters */
-    ...mapGetters({
+    ...mapGetters({ // get vuex/getters
       fullName: 'fullName',
       textPlus: 'a/textPlus'
     }),
     count() {
-      /* get vuex store */
-      return this.$store.state.count
+      return this.$store.state.count // get vuex store
     },
     textA() {
-      /* invoked module b */
-      return this.$store.state.b.text
+      return this.$store.state.b.text // invoked module b
     },
     fullName() {
       return this.$store.getters.fullName

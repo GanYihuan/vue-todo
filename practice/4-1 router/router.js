@@ -20,7 +20,7 @@ export default () => {
       }
     },
     fallback: true, // 当浏览器不支持单页应用时, 默认返回哈希方式, 默认设为 true 如果设置成 false, 单页面变成多页应用, 耗时
-    parseQuery(query) {}, /* query -> url: ?a=111&b=222 string => json(object) */
+    parseQuery(query) {}, // query -> url: ?a=111&b=222 string => json(object)
     stringifyQuery(obj) {} // json(object) => string
   })
 }

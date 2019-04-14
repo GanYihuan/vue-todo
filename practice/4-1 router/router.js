@@ -5,21 +5,21 @@ export default () => {
   // project requires server-side rendering to prevent memory overflows, using method calls to return the Router
   return new Router({
     routes,
-    mode: 'history', // 去除地址栏的哈希 #
-    base: '/base/', // 地址栏自动添加 localhost:8000/base/ 前缀
-    linkActiveClass: 'active-link', // 含有激活路由时, <router-link/> 添加 className=active-link
-    linkExactActiveClass: 'exact-active-link', // 激活路由完全匹配 /login/exact <router-link/> 添加 className=exact-active-link
-    scrollBehavior(to, from, savedPosition) { // 路由跳转时页面滚动到指定位置
+    mode: 'history', // Remove the hash of the address bar #
+    base: '/base/', // The address bar is automatically added localhost:8000/base/ Prefix
+    linkActiveClass: 'active-link', // When there is an active route, <router-link/> add className=active-link
+    linkExactActiveClass: 'exact-active-link', // Activate route exact match /login/exact <router-link/> add className=exact-active-link
+    scrollBehavior(to, from, savedPosition) { // Page scrolls to the specified location when the route jumps
       if (savedPosition) {
         return savedPosition
       } else {
-        return { // 指定位置
+        return { // Specified location
           x: 0,
           y: 0
         }
       }
     },
-    fallback: true, // 当浏览器不支持单页应用时, 默认返回哈希方式, 默认设为 true 如果设置成 false, 单页面变成多页应用, 耗时
+    fallback: true, // When the browser does not support single page applications, Default return hash mode, Default setting true, If set to false, Single page becomes a multi-page application, time consuming
     parseQuery(query) {}, // query -> url: ?a=111&b=222 string => json(object)
     stringifyQuery(obj) {} // json(object) => string
   })

@@ -2,12 +2,12 @@
 import Login from '../views/login/login.vue'
 
 export default [
-  { // 默认路由跳转
+  { // Default route jump
     path: '/',
     redirect: '/app'
   },
   {
-    // path: '/app', // 当路由匹配成功时, 在 <router-view></router-view> 渲染出组件
+    // path: '/app', // When the route matches successfully, at <router-view></router-view> Render components
     path: '/app/:id', // transfer router parameter, matches route: /app/xxx
     props: true, // transfer router parameter ':id' to <RankList/>, <RankList/> can use props get :id, decoupling $route
     // props: { id: '456' }, // pass route params id=456
@@ -19,20 +19,20 @@ export default [
     //   a: Login
     // },
     component: () => {
-      /* 异步路由, Save load time */
+      /* Asynchronous routing, Save load time */
       /* webpackChunkName: "todo-view" */
       import('../views/todo/todo.vue')
     },
-    name: 'app', // 路由命名 <router-link :to="{name: 'app'}">app</router-link>
-    meta: { // 保存路由信息, 有利于 SEO
+    name: 'app', // Route naming, <router-link :to="{name: 'app'}">app</router-link>
+    meta: { // Save routing information, beneficial to SEO
       title: 'this is app',
       description: '123'
     },
-    beforeEnter(to, from, next) { // 路由进入前触发
+    beforeEnter(to, from, next) { // Trigger before route entry
       console.log('2. app route before enter')
       next()
     },
-    children: [ // router-view 放置在 todo 组件里面显示子路由
+    children: [ // <router-view></router-view> put into todo component inside, show sub-route
       {
         path: 'test',
         component: Login

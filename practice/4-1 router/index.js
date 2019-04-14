@@ -7,7 +7,7 @@ import './assets/styles/global.styl'
 Vue.use(VueRouter)
 const router = createRouter()
 
-router.beforeEach((to, from, next) => { // 数据校验, 路由改变时触发
+router.beforeEach((to, from, next) => { // Data validation, Triggered when the route changes
   console.log('1. before each invoked')
   next()
   if (to.fullPath === '/app') {
@@ -28,7 +28,7 @@ router.beforeResolve((to, from, next) => {
   next()
 })
 
-router.afterEach((to, from) => { // 路由跳转后触发
+router.afterEach((to, from) => { // Trigger after route jump
   console.log('5. after each invoked')
 })
 

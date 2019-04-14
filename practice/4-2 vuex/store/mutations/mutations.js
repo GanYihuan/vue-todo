@@ -1,5 +1,5 @@
 export default { // sync modify state
-  updateCount(state, { num, num2 }) { // state: 修改数据, { num, num2 } 参数对象
+  updateCount(state, { num, num2 }) { // state: change the data, { num, num2 } Parameter object
     console.log(num2)
     state.count = num
   },

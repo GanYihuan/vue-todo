@@ -21,18 +21,18 @@ const app = new Vue({
   // Y: compile template as render function
   template: '<div>{{test}}</div>',
   beforeMount() { // Data and templates are about to be combined with the moment before being mounted on the page, dom Related, No data, Server rendering is not called(Server rendering does not dom)
-    // <div id="app"></div>
+    // <div></div>
     console.log(this.$el, 'beforeMount')
   },
-  render(h) { // h: createElement() time consuming, low efficiency
+  render(h) { // h: createElement() -> time consuming, low efficiency
     throw new TypeError('render error')
   },
   renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
     return h('div', {}, err.stack)
   },
-  errorCaptured() {}, // Will bubble up, Used in a formal environment, Collecting errors
+  errorCaptured() {}, // Will bubble up, Used in a production environment, Collecting errors
   // create vm.$el and replace 'el' with it
-  mounted() { // dom Related, Have data, Server rendering is not called, Server rendering does not dom, mounted after, Execution of the life cycle is required for external triggering, through render, Node becomes: <div>hello world</div>
+  mounted() { // dom Related, Have data, Server rendering is not called, Server rendering does not dom, mounted after, Execution of the life cycle is required for external triggering
     // <div>hello world</div>
     console.log(this.$el, 'mounted')
   },
@@ -42,7 +42,7 @@ const app = new Vue({
   updated() { // virtual DMO re-render and patch Data updates are invoked
     console.log(this, 'updated')
   },
-  activated() { // When used keep-alive, App.vue Activate add-on, Will run when the page is redisplayed
+  activated() { // When used <keep-alive></keep-alive>, App.vue Activate add-on, Will run when the page is redisplayed
     console.log(this, 'activated')
   },
   deactivated() { // deactivated(){}, contrast activated opposite

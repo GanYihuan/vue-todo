@@ -1,69 +1,76 @@
 import Vue from 'vue'
 
 const app = new Vue({
-  // el: '#root', // 挂载点
-  template: '<div ref="div">{{text}} {{obj.a}}</div>', // template 会渲染到 #root 里面
-  data: {
+  // el: '#root', // Mount point
+  template: '<div ref="div">{{text}} {{obj.a}}</div>', // template will render #root inside
+  pros : {
+    type : String,
+    default: 'text'
+  },
+  data() {
     text: 0,
-    obj: {} // 没定义 a
+    obj: {} // no define a
   },
   mounted() {
-    this.a() // this: 相当于 app, app.a(), app. 就是 vue 实例
+    this.a() // this: equal app, app. is vue instance
   },
-  watch: { // watch 自动注销
+  watch: { // auto distory
     text(newText, oldText) {
       console.log(`${newText} : ${oldText}`)
     }
   }
 })
-const unWatch = app.$watch('text', (newText, oldText) => { // app.$watch 相当于 watch(){}, 差别在于是否能主动注销, 该方法要手动注销
+const unWatch = app.$watch('text', (newText, oldText) => { // app.$watch equal watch: {}, can't auto distory
   console.log(`$(newText) : $(oldText)`)
 })
 setTimeout(() => {
   unWatch()
 }, 2000)
-app.$mount('#root') // 替代 el
+app.$mount('#root') // replace el
 app.text = 'text1'
 
 let i = 0
 setInterval(() => {
   i++
-  app.obj.a = i // obj 没定义 a 就赋值, 形成非响应式
-  app.$forceUpdate() // 强制组件渲染一次, 不建议使用
-  app.$set(app.obj, 'a', i) // 设置值 响应式
-  app.$delete(app.obj, 'a', i) // 删除值
-  // 异步渲染, 值更新会放入一个异步队列里，一段时间后一次性渲染队列里全部值
+  app.obj.a = i // obj no difine a, not reaction
+  app.$forceUpdate() // foce componet render once
+  app.$set(app.obj, 'a', i) // set value, reaction
+  app.$delete(app.obj, 'a', i) // delete value
+  // async render, Value updates are placed in an asynchronous queue, Render all values ​​in the queue once after a while
   app.text += 1
   app.text += 1
   app.text += 1
   app.text += 1
   app.text += 1
-  // $nextTick(): 异步渲染, 在下次 DOM 更新循环结束之后执行延迟回调
+  // $nextTick(): async render, At the next time DOM Perform a delayed callback after the update loop ends
   // a = 5 -> 10 -> 15 ...
 }, 1000)
 
-console.log(app.$el) // <div>0</div> 挂载的 html 节点的引用
-console.log(app.$props)
+console.log(app.$props) // text
 console.log(app.$data)
-console.log(app.$options) // new Vue 传入的整个对象
+
+console.log(app.$options) // new Vue The entire object passed in
 app.$options.data.text += 1 // useless
 app.$data.text += 1 // usefull
-app.$options.render = h => { // 下次有值改变时候渲染
+app.$options.render = h => { // Render next time there is a value change
   return h('div', {}, 'new render function')
 }
+
+console.log(app.$el) // <div>0</div> Mounted html Node reference
 console.log(app.$root === app) // true
 console.log(app.$children) // <item><div></div></item> $children -> div
-console.log(app.$slots) // 插槽
-console.log(app.$scopedSlots) // 插槽
-console.log(app.$refs) // 定位组件, 节点
-console.log(app.$isServer) // 判断是否是服务端渲染
+console.log(app.$refs) // Positioning component, node
+console.log(app.$isServer) // Determine if it is server-side rendering
 
-app.$on('test', (a, b) => { // 监听
+console.log(app.$slots) // Slot
+console.log(app.$scopedSlots) // Slot
+
+app.$on('test', (a, b) => { // Listen
   console.log(`test emited ${a} ${b}`)
 })
-app.$once('test', (a, b) => { // 只监听一次
+app.$once('test', (a, b) => { // Listen only once
   console.log(`test emited ${a} ${b}`)
 })
 setInterval(() => {
-  app.$emit('test', 1, 2) // 触发
+  app.$emit('test', 1, 2) // trigger
 }, 1000)

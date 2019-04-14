@@ -26,13 +26,13 @@ new Vue({
       }
     }
   },
-  computed: { // 能缓存, 生成值
+  computed: { // Can cache, Generated value
     name: {
       get() {
         console.log('new name')
         return `${this.firstName} ${this.lastName}`
       },
-      set(name) { // 不推荐改原来的值
+      set(name) { // It is not recommended to change the original value
         const names = name.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
@@ -46,17 +46,17 @@ new Vue({
       return `${this.firstName} ${this.lastName}`
     }
   },
-  watch: { // 监听到有变化才执行, 生成值, 不推荐改原来的值
+  watch: { // Listen to changes to execute, Generated value, It is not recommended to change the original value
     firstName(newName, oldName) {
       this.fullName = newName + ' ' + oldName
     },
-    'obj.a': { // 给 obj 赋值时才能监听到
-      handler() { // 执行
+    'obj.a': { // give obj.a value Can monitored
+      handler() { // execute
         console.log('obj.a changed')
-        this.obj.a += 1 // 不推荐改原来的值, 应该监听然后处理成另外一个值
+        this.obj.a += 1 // It is not recommended to change the original value, Should be listened to and then processed into another value
       },
-      immediate: true, // 立即执行 handler()
-      deep: true // 针对 obj:{}, 监听整个 obj，高性能开销
+      immediate: true, // Execute immediately handler()
+      deep: true // For obj:{}, Monitor the whole obj, High performance overhead
     }
   }
 })

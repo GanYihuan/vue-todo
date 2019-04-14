@@ -15,7 +15,7 @@ const component = {
   data() { // child component data must function
     return {
       text: 0,
-      propOned: this.propOne // 父级数据转化为子组件内部数据, 子级不能直接修改父级数据
+      propOned: this.propOne // Parent data is converted to subcomponent internal data, Children cannot directly modify parent data
     }
   },
   template: `
@@ -27,7 +27,7 @@ const component = {
   `,
   methods: {
     handleChange() {
-      this.$emit('change') // 子级抛出事件给父级来修改父级数据, 单项数据流
+      this.$emit('change') // The child throws an event to the parent to modify the parent data., Single data stream
     }
   }
 }

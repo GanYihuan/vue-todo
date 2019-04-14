@@ -1,17 +1,17 @@
 import Vue from 'vue'
 
-const ChildComponent = { // 子组件
-  template: '<div>child component: {{value}}</div>', // 爷爷组件
+const ChildComponent = { // child component
+  template: '<div>child component: {{value}}</div>', // Grandfather component
   // inject: ['yeye', 'data'],
-  inject: ['yeye', 'value'], // 拿到所有父级
+  inject: ['yeye', 'value'], // Get all the parents
   mounted() {
-    // $parent 只能拿到上一级里面的 value
+    // $parent Can only get the upper level value
     console.log(this.$parent.$options.name) // comp
-    console.log(this.yeye, this.value) // 爷爷组件
+    console.log(this.yeye, this.value) // Grandfather component
   }
 }
 
-const component = { // 父组件
+const component = { // Parent component
   name: 'comp',
   components: {
     ChildComponent
@@ -40,7 +40,7 @@ const component = { // 父组件
   }
 }
 
-new Vue({ // 爷爷组件
+new Vue({ // Grandfather component
   components: {
     CompOne: component
   },
@@ -50,7 +50,7 @@ new Vue({ // 爷爷组件
       value: '爷爷组件'
     }
   },
-  provide() { // 下级组件注入, 不提供 react 属性, 像 data()
+  provide() { // child component injection, Not available react attribute, like data()
     // 不推荐用 defineProperty() 提供 react 属性, 使 value 改变下级对应改变
     // const data = {}
     // Object.defineProperty(data, 'value', {
@@ -71,7 +71,7 @@ new Vue({ // 爷爷组件
       <comp-one ref="comp">
         <span slot="header">this is header</span>
         <span slot="footer">this is footer</span>
-        <span slot="content" slot-scope="props" ref="span">{{props.value}} {{value}}</span> // slot-scope="props": 调用子组件 slot 的属性 value
+        <span slot="content" slot-scope="props" ref="span">{{props.value}} {{value}}</span> // slot-scope="props": Calling slot attribute value
       </comp-one>
       <input type="text" v-model="value" />
     </div>

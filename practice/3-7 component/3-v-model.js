@@ -2,8 +2,8 @@ import Vue from 'vue'
 
 const component = {
   model: {
-    prop: 'value1', // 自定义 prop 名称 value -> value1
-    event: 'change' // 自定义事件名称 input -> change
+    prop: 'value1', // customize prop name value -> value1
+    event: 'change' // Custom event name input -> change
   },
   // props: { 'value' },
   props: {

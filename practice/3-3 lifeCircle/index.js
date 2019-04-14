@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-// 生命周期函数是某个时间点执行的函数 vm: vue实例
+// The lifecycle function is a function that is executed at a certain point in time. vm: vue instcance
 const app = new Vue({
   data() {
     return {
@@ -8,11 +8,11 @@ const app = new Vue({
     }
   },
   // init event & lifecycle
-  beforeCreate() { // 初始化 dom 没完成 不要修改数据 服务端渲染调用
+  beforeCreate() { // initialization dom not complete, Do not modify the data, Server rendering call
     console.log(this.$el, 'beforeCreate') // undefined
   },
   // init injections & reactivity
-  created() { // 初始化 dom 没完成 能改数据 数据不会被监控 服务端渲染调用
+  created() { // initialization dom not complete, Can change data, Data is not monitored, Server rendering call
     console.log(this.$el, 'created') // undefined
   },
   el: '#root',
@@ -20,19 +20,19 @@ const app = new Vue({
   // Y: has 'template' option? N: compile outHTML(el) as template
   // Y: compile template as render function
   template: '<div>{{test}}</div>',
-  beforeMount() { // 数据和模板即将结合挂载到页面中之前一瞬间 dom 相关 没数据 服务端渲染不调用(服务端渲染没有 dom)
+  beforeMount() { // Data and templates are about to be combined with the moment before being mounted on the page, dom Related, No data, Server rendering is not called(Server rendering does not dom)
     // <div id="app"></div>
     console.log(this.$el, 'beforeMount')
   },
-  render(h) { // h: createElement() 耗时 效率低
+  render(h) { // h: createElement() time consuming, low efficiency
     throw new TypeError('render error')
   },
-  renderError(h, err) { // h: createElement() 开发环境中使用, 不关心子组件
+  renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
     return h('div', {}, err.stack)
   },
-  errorCaptured() {}, // 会向上冒泡, 正式的环境中使用, 收集错误
+  errorCaptured() {}, // Will bubble up, Used in a formal environment, Collecting errors
   // create vm.$el and replace 'el' with it
-  mounted() { // dom 相关 有数据 服务端渲染不调用 服务端渲染没有 dom mounted 之后, 要外界触发才执行生命周期 经过 render 节点变为: <div>hello world</div>
+  mounted() { // dom Related, Have data, Server rendering is not called, Server rendering does not dom, mounted after, Execution of the life cycle is required for external triggering, through render, Node becomes: <div>hello world</div>
     // <div>hello world</div>
     console.log(this.$el, 'mounted')
   },
@@ -42,10 +42,10 @@ const app = new Vue({
   updated() { // virtual DMO re-render and patch Data updates are invoked
     console.log(this, 'updated')
   },
-  activated() { // 当使用 keep-alive 时，App.vue 将附加组件激活 当页面重新显示的时候将运行
+  activated() { // When used keep-alive, App.vue Activate add-on, Will run when the page is redisplayed
     console.log(this, 'activated')
   },
-  deactivated() { // deactivated(){}, 与 activated 相反
+  deactivated() { // deactivated(){}, contrast activated opposite
     console.log(this, 'deactivated')
   },
   beforeDestroy() { // when vm.$destory() is called
@@ -57,7 +57,7 @@ const app = new Vue({
 })
 
 app.$mount('#root')
-// setInterval(() => { // 数据更新
+// setInterval(() => { // Data Update
 //   app.text = app.text += 1
 // }, 1000)
 

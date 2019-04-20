@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 const app = new Vue({
-  // el: '#root', // Mount point
+  el: '#root', // Mount point
   template: '<div ref="div">{{text}} {{obj.a}}</div>', // template will render #root inside
   pros : {
     type : String,
@@ -47,7 +47,7 @@ setInterval(() => {
 }, 1000)
 
 console.log(app.$props) // text
-console.log(app.$data)
+console.log(app.$data) // text: 0, obj: {}
 
 console.log(app.$options) // new Vue The entire object passed in
 app.$options.data.text += 1 // useless

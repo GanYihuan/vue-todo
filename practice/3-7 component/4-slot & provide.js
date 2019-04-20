@@ -51,7 +51,7 @@ new Vue({ // Grandfather component
     }
   },
   provide() { // child component injection, Not available react attribute, like data()
-    // 不推荐用 defineProperty() 提供 react 属性, 使 value 改变下级对应改变
+    // Not recommended defineProperty() provide react Attributes, 使 value 改变下级对应改变
     // const data = {}
     // Object.defineProperty(data, 'value', {
     //   get: () => this.value,

@@ -2,6 +2,10 @@
 
 > vue核心技术 Vue+Vue-Router+Vuex+SSR实战精讲
 
+## 大纲
+
+![大纲](https://i.loli.net/2019/05/12/5cd78928aeb73.png)
+
 ## use method
 
 ```console

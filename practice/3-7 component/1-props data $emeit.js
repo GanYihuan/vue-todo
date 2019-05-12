@@ -1,5 +1,14 @@
 import Vue from 'vue'
 
+/*
+props 特性 : 父组件传递给子组件数据，子组件内部也定义好该数据名称
+标签里的 数据名称 不会显示在 dom 上
+可以使用 this.xxx 或 {{}} 来调用 数据名称
+
+非 props 特性 : 子组件内部没有定义 props,
+标签里的 数据名称 会显示在 dom 上
+不可以使用 this.xxx 或 {{}} 来调用
+*/
 const component = {
   props: {
     active: {

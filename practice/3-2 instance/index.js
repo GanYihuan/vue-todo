@@ -20,12 +20,7 @@ const app = new Vue({
     }
   }
 })
-const unWatch = app.$watch('text', (newText, oldText) => { // app.$watch equal watch: {}, can't auto distory
-  console.log(`$(newText) : $(oldText)`)
-})
-setTimeout(() => {
-  unWatch()
-}, 2000)
+
 app.$mount('#root') // replace el
 app.text = 'text1'
 
@@ -49,7 +44,7 @@ setInterval(() => {
 console.log(app.$props) // text
 console.log(app.$data) // text: 0, obj: {}
 
-console.log(app.$options) // new Vue The entire object passed in
+console.log(app.$options) // new Vue, The entire object passed in
 app.$options.data.text += 1 // useless
 app.$data.text += 1 // usefull
 app.$options.render = h => { // Render next time there is a value change
@@ -61,6 +56,13 @@ console.log(app.$root === app) // true
 console.log(app.$children) // <item><div></div></item> $children -> div
 console.log(app.$refs) // Positioning component, node
 console.log(app.$isServer) // Determine if it is server-side rendering
+
+const unWatch = app.$watch('text', (newText, oldText) => { // app.$watch equal watch: {}, can't auto distory
+  console.log(`$(newText) : $(oldText)`)
+})
+setTimeout(() => {
+  unWatch()
+}, 2000)
 
 console.log(app.$slots) // Slot
 console.log(app.$scopedSlots) // Slot

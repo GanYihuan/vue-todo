@@ -3,8 +3,8 @@ import Vue from 'vue'
 const app = new Vue({
   el: '#root', // Mount point
   template: '<div ref="div">{{text}} {{obj.a}}</div>', // template will render #root inside
-  pros : {
-    type : String,
+  props: {
+    type: String,
     default: 'text'
   },
   data() {
@@ -47,7 +47,7 @@ console.log(app.$data) // text: 0, obj: {}
 console.log(app.$options) // new Vue, The entire object passed in
 app.$options.data.text += 1 // useless
 app.$data.text += 1 // usefull
-app.$options.render = h => { // Render next time there is a value change
+app.$options.render = h => { // Render next time that value change
   return h('div', {}, 'new render function')
 }
 

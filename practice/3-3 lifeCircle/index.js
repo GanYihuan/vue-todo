@@ -17,7 +17,7 @@ const app = new Vue({
   },
   el: '#root',
   // has 'el' option? N: when vm.$mount(el) is called
-  // Y: has 'template' option? N: compile outHTML(el) as template
+  // Y: has 'template' option? N: compile el's outHTML as template
   // Y: compile template as render function
   template: '<div>{{test}}</div>',
   beforeMount() { // Data and templates are about to be combined with the moment before being mounted on the page, dom Related, No data, Server rendering is not called(Server rendering does not dom)
@@ -30,7 +30,7 @@ const app = new Vue({
   renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
     return h('div', {}, err.stack)
   },
-  errorCaptured() {}, // Will bubble up, Used in a production environment, Collecting errors
+  errorCaptured() {}, // Will bubble up, Used in production environment, Collecting errors
   // create vm.$el and replace 'el' with it
   mounted() { // dom Related, Have data, Server rendering is not called, Server rendering does not dom, mounted after, Execution of the life cycle is required for external triggering
     // <div>hello world</div>

@@ -25,7 +25,7 @@ export default () => {
           text: 1
         },
         getters: {
-          textPlus(state, getters, rootState) { // rootState: global state
+          textPlus(state, rootState) { // rootState: global state
             return state.text + rootState.b.text
           }
         },

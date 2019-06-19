@@ -26,13 +26,12 @@ new Vue({
       }
     }
   },
-  computed: { // Can cache, Generated value
+  computed: { // can cache, generate value
     name: {
       get() {
-        console.log('new name')
         return `${this.firstName} ${this.lastName}`
       },
-      set(name) { // It is not recommended to change the original value
+      set(name) { // not recommend to change the original value
         const names = name.split(' ')
         this.firstName = names[0]
         this.lastName = names[1]
@@ -42,21 +41,20 @@ new Vue({
   },
   methods: {
     getName() {
-      console.log('getName invoked')
       return `${this.firstName} ${this.lastName}`
     }
   },
-  watch: { // Listen to changes to execute, Generated value, It is not recommended to change the original value
+  watch: { // listen change to execute, generate value, not recommend to change original value
     firstName(newName, oldName) {
       this.fullName = newName + ' ' + oldName
     },
-    'obj.a': { // give obj.a value Can monitored
+    'obj.a': { // give obj.a value monitor
       handler() { // execute
         console.log('obj.a changed')
-        this.obj.a += 1 // It is not recommended to change the original value, Should be listened to and then processed into another value
+        this.obj.a += 1 // not recommend change original value, should listen and then processe into another value
       },
-      immediate: true, // Execute immediately handler()
-      deep: true // For obj:{}, Monitor the whole obj, High performance overhead
+      immediate: true, // immediate execute handler()
+      deep: true // for obj:{}, monitor whole obj:{}, high performance overhead
     }
   }
 })

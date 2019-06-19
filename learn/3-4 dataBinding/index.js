@@ -29,7 +29,6 @@ new Vue({
   },
   methods: {
     handleClick() {
-      console.log('clicked')
     },
     getJoinedArr(arr) {
       return arr.join(' ')

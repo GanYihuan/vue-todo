@@ -8,17 +8,15 @@ const app = new Vue({
     }
   },
   // init event & lifecycle
-  beforeCreate() { // initialization dom not complete, Do not modify the data, Server rendering call
-    console.log(this.$el, 'beforeCreate') // undefined
+  beforeCreate() { // dom not complete, don't modify data, server side render
   },
   // init injections & reactivity
-  created() { // initialization dom not complete, Can change data, Data is not monitored, Server rendering call
-    console.log(this.$el, 'created') // undefined
+  created() { // dom not complete, can modify data, data not monitor, server side render
   },
   el: '#root',
-  // has 'el' option? N: when vm.$mount(el) is called
-  // Y: has 'template' option? N: compile el's outHTML as template
-  // Y: compile template as render function
+  // has 'el' option ? N: when vm.$mount(el) is called
+  // Y: has 'template' option ? N: compile el's outHTML as template
+  // Y: compile template into render function
   template: '<div>{{test}}</div>',
   beforeMount() { // Data and templates are about to be combined with the moment before being mounted on the page, dom Related, No data, Server rendering is not called(Server rendering does not dom)
     // <div></div>
@@ -36,23 +34,23 @@ const app = new Vue({
     // <div>hello world</div>
     console.log(this.$el, 'mounted')
   },
-  beforeUpdate() { // when data changes
+  // Mounted
+  // when data changes
+  beforeUpdate() {
     console.log(this, 'beforeUpdate')
   },
-  updated() { // virtual DMO re-render and patch Data updates are invoked
+  // virtual DMO re-render and patch Data updates are invoked
+  updated() {
     console.log(this, 'updated')
   },
   activated() { // When used <keep-alive></keep-alive>, App.vue Activate add-on, Will run when the page is redisplayed
-    console.log(this, 'activated')
   },
   deactivated() { // deactivated(){}, contrast activated opposite
-    console.log(this, 'deactivated')
   },
-  beforeDestroy() { // when vm.$destory() is called
-    console.log(this, 'beforeDestroy')
+  // when vm.$destory() is called
+  beforeDestroy() {
   },
   destroyed() { // teardown watches, child components and events listeners
-    console.log(this, 'destroyed')
   }
 })
 

@@ -1,21 +1,20 @@
-import Vue from "vue";
-
-const app = new Vue({
-  el: '#root',
-  template: '<div>{{text}} {{obj.a}}</div>',
-  props: {
-    value: {
-      type: String
-    }
-  },
-  data() {
-    value: 0
-  },
-  model: {
-    prop: 'value1',
-    event: 'change'
-  }
-}
-app.$mount('#root')
-
-
+init event & lifecyle
+beforCreate()
+init injection & reactivity
+created()
+has el option ? -> no when vm.$mount(el) is called
+has template option ?
+compile template into render func
+compile el's outerHTML as template
+beforeMount()
+render()
+renderError()
+errorCaptured()
+create vm.$el and replace 'el' with it
+mounted()
+beforeUpdate()
+updated()
+activated()
+deactivated()
+beforeDestory()
+destoryed()

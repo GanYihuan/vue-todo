@@ -1,12 +1,17 @@
 import Vue from 'vue'
 
 const app = new Vue({
+  name: 'app',
   el: '#root', // Mount point
   template: '<input type="text" @input="handleInput" :value="value1"></div>', // template will render #root inside
   model: {
     prop: 'value1', // defined prop name, value -> value1
     event: 'change' // defined event name, input -> change
   },
+  propsData: { // propsData: child pass data to parent
+    propOne: 'xxx'
+  },
+  extends: component, // child inherit from parent
   props: {
     active: {
       required: true, // must pass

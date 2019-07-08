@@ -2,19 +2,6 @@ import Vue from 'vue'
 
 new Vue({
   el: '#root',
-  template: `
-    <div>
-      <p>Name: {{name}}</p>
-      <p>Name: {{getName()}}</p>
-      <p>Number: {{number}}</p>
-      <p>FullName: {{fullName}}</p>
-      <p><input type="text" v-model="number"></p>
-      <p>FirstName: <input type="text" v-model="firstName"></p>
-      <p>LastName: <input type="text" v-model="lastName"></p>
-      <p>Name: <input type="text" v-model="name"></p>
-      <p>Obj.a: <input type="text" v-model="obj.a"></p>
-    </div>
-  `,
   data() {
     return {
       firstName: 'Jokcy',
@@ -39,11 +26,6 @@ new Vue({
       // return `${this.firstName} ${this.lastName}`
     }
   },
-  methods: {
-    getName() {
-      return `${this.firstName} ${this.lastName}`
-    }
-  },
   watch: { // listen change to execute, generate value, not recommend to change original value
     firstName(newName, oldName) {
       this.fullName = newName + ' ' + oldName
@@ -56,5 +38,23 @@ new Vue({
       immediate: true, // immediate execute handler()
       deep: true // for obj:{}, monitor whole obj:{}, high performance overhead
     }
-  }
+  },
+  methods: {
+    getName() {
+      return `${this.firstName} ${this.lastName}`
+    }
+  },
+  template: `
+    <div>
+      <p>Name: {{name}}</p>
+      <p>Name: {{getName()}}</p>
+      <p>Number: {{number}}</p>
+      <p>FullName: {{fullName}}</p>
+      <p><input type="text" v-model="number"></p>
+      <p>FirstName: <input type="text" v-model="firstName"></p>
+      <p>LastName: <input type="text" v-model="lastName"></p>
+      <p>Name: <input type="text" v-model="name"></p>
+      <p>Obj.a: <input type="text" v-model="obj.a"></p>
+    </div>
+  `
 })

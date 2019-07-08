@@ -44,12 +44,9 @@ const component = {
 
 new Vue({
   el: '#root',
-  template: `
-    <div>
-      <comp-one ref="comp1" :active="true" :prop-one="prop1" @change="handleChange"></comp-one>
-      <comp-one :active="true" propOne="text2"></comp-one>
-    </div>
-  `,
+  components: {
+    CompOne: component
+  },
   data() {
     return {
       prop1: 'text1'
@@ -63,7 +60,10 @@ new Vue({
       this.prop1 += 1
     }
   },
-  components: {
-    CompOne: component
-  }
+  template: `
+    <div>
+      <comp-one ref="comp1" :active="true" :prop-one="prop1" @change="handleChange"></comp-one>
+      <comp-one :active="true" propOne="text2"></comp-one>
+    </div>
+  `
 })

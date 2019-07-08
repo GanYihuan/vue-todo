@@ -2,23 +2,12 @@ import Vue from 'vue'
 
 new Vue({
   el: '#root',
-  template: `
-    <div
-      :id="aaa"
-      :class="[{active: isActive}]"
-      :style="[styles, styles2]"
-      @click="handleClick"
-    >
-      <p v-html="html"></p>
-      <p>{{getJoinedArr(arr)}}</p>
-    </div>
-  `,
   data() {
     return {
       aaa: 'main',
       isActive: false,
       styles: {
-        color: 'red',
+        color: 'red'
       },
       styles2: {
         color: 'blue'
@@ -33,5 +22,16 @@ new Vue({
     getJoinedArr(arr) {
       return arr.join(' ')
     }
-  }
+  },
+  template: `
+    <div
+      :id="aaa"
+      :class="[{active: isActive}]"
+      :style="[styles, styles2]"
+      @click="handleClick"
+    >
+      <p v-html="html"></p>
+      <p>{{getJoinedArr(arr)}}</p>
+    </div>
+  `
 })

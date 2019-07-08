@@ -40,11 +40,11 @@ const component = { // Parent component
   }
 }
 
-new Vue({ // Grandfather component
+new Vue({
+  el: '#root', // Grandfather component
   components: {
     CompOne: component
   },
-  el: '#root',
   data() {
     return {
       value: '爷爷组件'

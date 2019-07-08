@@ -61,12 +61,12 @@ const componet2 = {
 }
 
 const parent = new Vue({
-  name: 'parent'
+  name: 'Parent'
 })
 new Vue({
-  parent: parent, // Inherit parent component
+  el: '#root', // Inherit parent component
   name: 'Root',
-  el: '#root',
+  parent: parent,
   components: {
     Comp: componet2
   },

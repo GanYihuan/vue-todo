@@ -51,7 +51,7 @@ const app = new Vue({
   renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
     return h('div', {}, err.stack)
   },
-  errorCaptured() {}
+  errorCaptured() {} // Will bubble up, used in a formal environment, collecting errors
 })
 
 app.$mount('#root')

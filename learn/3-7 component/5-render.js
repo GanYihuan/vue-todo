@@ -36,10 +36,10 @@ const component = {
 }
 
 new Vue({
+  el: '#root',
   components: {
     CompOne: component
   },
-  el: '#root',
   data() {
     return {
       value: '123'

@@ -1,18 +1,29 @@
 import Vue from 'vue'
 
+const component = new Vue({ })
 const app = new Vue({
-  name: 'app',
-  el: '#root', // Mount point
-  template: '<input type="text" @input="handleInput" :value="value1"></div>', // template will render #root inside
+  el: '#root',
+  name: 'App',
+  filters: {
+    formatDate(time) {
+      const date = new Date(time)
+      return date
+    }
+  },
+  extends: component, // template will render #root inside
   model: {
-    prop: 'value1', // defined prop name, value -> value1
-    event: 'change' // defined event name, input -> change
+    prop: 'value1', // define father pass prop name, value -> value1
+    event: 'change' // define father pass event name, input -> change
   },
   propsData: { // propsData: child pass data to parent
     propOne: 'xxx'
   },
-  extends: component, // child inherit from parent
+  // child inherit from parent
   props: {
+    value1: {
+      type: String,
+      default: 'a'
+    },
     active: {
       required: true, // must pass
       type: Boolean, // must bollean
@@ -21,12 +32,22 @@ const app = new Vue({
         return typeof value === 'boolean'
       }
     },
-    propOne: String
+    propOne: {
+      type: String,
+      default: 'hello'
+    }
   },
   data() { // function
-    text: 0,
-    propOned: this.propOne, // parent data is converted to the child data, child cannot modify parent data
-    obj: {} // not define a
+    return {
+      text: 0,
+      propOned: this.propOne, // parent data is converted to the child data, child cannot modify parent data
+      obj: {} // not define a
+    }
+  },
+  watch: { // auto destroy
+    text(newText, oldText) {
+      console.log(`${newText} : ${oldText}`)
+    }
   },
   mounted() {
     this.a() // this = app
@@ -35,18 +56,8 @@ const app = new Vue({
     handleInput(e) {
       this.$emit('change', e.target.value)
     }
-  },
-  watch: { // auto destroy
-    text(newText, oldText) {
-      console.log(`${newText} : ${oldText}`)
-    }
-  },
-  filters: {
-    formatDate(time) {
-      const date = new Date(time)
-      return formatDate(date, 'yyyy-MM-dd hh:mm')
-    }
-  }
+  }, // Mount point
+  template: '<input type="text" @input="handleInput" :value="value1"></div>'
 })
 
 app.$mount('#root') // replace el
@@ -59,7 +70,7 @@ setInterval(() => {
   app.$forceUpdate() // foce componet render once
   app.$set(app.obj, 'a', i) // set value, reaction
   app.$delete(app.obj, 'a', i) // delete value
-  // async render, Value updates are placed in an asynchronous queue, Render all values ​​in the queue once after a while
+  // async render, Value updates are placed in an asynchronous queue, Render all values in the queue once after a while
   app.text += 1
   app.text += 1
   app.text += 1

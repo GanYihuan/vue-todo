@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 // The lifecycle function is a function that is executed at a certain point in time. vm: vue instcance
 const app = new Vue({
+  el: '#root',
   data() {
     return {
       test: 'hello vue'
@@ -13,22 +14,10 @@ const app = new Vue({
   // init injections & reactivity
   created() { // dom not complete, can modify data, data not monitor, server side render
   },
-  el: '#root',
-  // has 'el' option ? N: when vm.$mount(el) is called
-  // Y: has 'template' option ? N: compile el's outHTML as template
-  // Y: compile template into render function
-  template: '<div>{{test}}</div>',
   beforeMount() { // Data and templates are about to be combined with the moment before being mounted on the page, dom Related, No data, Server rendering is not called(Server rendering does not dom)
     // <div></div>
     console.log(this.$el, 'beforeMount')
-  },
-  render(h) { // h: createElement() -> time consuming, low efficiency
-    throw new TypeError('render error')
-  },
-  renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
-    return h('div', {}, err.stack)
-  },
-  errorCaptured() {}, // Will bubble up, Used in production environment, Collecting errors
+  }, // Will bubble up, Used in production environment, Collecting errors
   // create vm.$el and replace 'el' with it
   mounted() { // dom Related, Have data, Server rendering is not called, Server rendering does not dom, mounted after, Execution of the life cycle is required for external triggering
     // <div>hello world</div>
@@ -51,7 +40,18 @@ const app = new Vue({
   beforeDestroy() {
   },
   destroyed() { // teardown watches, child components and events listeners
-  }
+  },
+  // has 'el' option ? N: when vm.$mount(el) is called
+  // Y: has 'template' option ? N: compile el's outHTML as template
+  // Y: compile template into render function
+  template: '<div>{{test}}</div>',
+  render(h) { // h: createElement() -> time consuming, low efficiency
+    return throw new TypeError('render error')
+  },
+  renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
+    return h('div', {}, err.stack)
+  },
+  errorCaptured() {}
 })
 
 app.$mount('#root')

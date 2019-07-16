@@ -4,21 +4,21 @@ const component = new Vue({ })
 const app = new Vue({
   el: '#root',
   name: 'App',
+  parent: parent, // Inherit parent component , new Vue Can specify parent
   filters: {
     formatDate(time) {
       const date = new Date(time)
       return date
     }
   },
-  extends: component, // template will render #root inside
+  extends: component, // child inherit from parent
   model: {
-    prop: 'value1', // define father pass prop name, value -> value1
-    event: 'change' // define father pass event name, input -> change
+    prop: 'value1', // define father pass prop name
+    event: 'change' // define father pass event name
   },
   propsData: { // propsData: child pass data to parent
     propOne: 'xxx'
   },
-  // child inherit from parent
   props: {
     value1: {
       type: String,
@@ -87,7 +87,7 @@ console.log(app.$root === app) // true
 console.log(app.$options) // new Vue
 app.$options.data.text += 1 // useless
 app.$data.text += 1 // usefull
-app.$options.render = h => { // render next time value change
+app.$options.render = h => { // next time value change, render
   return h('div', {}, 'new render function')
 }
 

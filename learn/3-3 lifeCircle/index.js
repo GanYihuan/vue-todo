@@ -14,11 +14,24 @@ const app = new Vue({
   // init injections & reactivity
   created() { // dom not complete, can modify data, data not monitor, server side render
   },
+  // has 'el' option ? N: when vm.$mount(el) is called
+  // Y: has 'template' option ? N: compile el's outHTML as template
+  // Y: compile template into render function
+  template: '<div>{{test}}</div>',
+  /* eslint-disable vue/order-in-components */
   beforeMount() { // Data and templates are about to be combined with the moment before being mounted on the page, dom Related, No data, Server rendering is not called(Server rendering does not dom)
-    // <div></div>
+    // <div id=''root></div>
     console.log(this.$el, 'beforeMount')
   }, // Will bubble up, Used in production environment, Collecting errors
+  render(h) { // h: createElement() -> time consuming, low efficiency
+    return throw new TypeError('render error')
+  },
+  renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
+    return h('div', {}, err.stack)
+  },
+  errorCaptured() {}, // Will bubble up, used in a formal environment, collecting errors
   // create vm.$el and replace 'el' with it
+  /* eslint-disable vue/order-in-components */
   mounted() { // dom Related, Have data, Server rendering is not called, Server rendering does not dom, mounted after, Execution of the life cycle is required for external triggering
     // <div>hello world</div>
     console.log(this.$el, 'mounted')
@@ -40,18 +53,7 @@ const app = new Vue({
   beforeDestroy() {
   },
   destroyed() { // teardown watches, child components and events listeners
-  },
-  // has 'el' option ? N: when vm.$mount(el) is called
-  // Y: has 'template' option ? N: compile el's outHTML as template
-  // Y: compile template into render function
-  template: '<div>{{test}}</div>',
-  render(h) { // h: createElement() -> time consuming, low efficiency
-    return throw new TypeError('render error')
-  },
-  renderError(h, err) { // h: createElement() Used in development environment, Don't care about subcomponents
-    return h('div', {}, err.stack)
-  },
-  errorCaptured() {} // Will bubble up, used in a formal environment, collecting errors
+  }
 })
 
 app.$mount('#root')

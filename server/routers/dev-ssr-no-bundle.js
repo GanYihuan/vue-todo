@@ -47,7 +47,7 @@ serverCompiler.watch({}, (err, stats) => {
   console.log('new bundle generated')
 })
 
-const handleSSR = async (ctx) => {
+const handleSSR = async(ctx) => {
   if (!bundle) {
     ctx.body = '你等一会，别着急......'
     return

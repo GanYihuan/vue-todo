@@ -1,6 +1,6 @@
 const ejs = require('ejs')
 
-module.exports = async (ctx, renderer, template, bundle) => {
+module.exports = async(ctx, renderer, template, bundle) => {
   ctx.headers['Content-Type'] = 'text/html'
 
   const context = { url: ctx.path, user: ctx.session.user }

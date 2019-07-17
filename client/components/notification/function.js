@@ -6,7 +6,7 @@ const NotificationConstructor = Vue.extend(Component)
 const instances = []
 let seed = 1
 
-const removeInstance = (instance) => {
+const removeInstance = (instance) => { // 删除节点
   if (!instance) return
   const len = instances.length
   const index = instances.findIndex(inst => instance.id === inst.id)
@@ -23,7 +23,6 @@ const removeInstance = (instance) => {
 
 const notify = (options) => {
   if (Vue.prototype.$isServer) return
-
   const {
     autoClose,
     ...rest

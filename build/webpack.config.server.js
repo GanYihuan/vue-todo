@@ -5,7 +5,6 @@ const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 // 打包不会有 js 输出
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
-let config
 const isDev = process.env.NODE_ENV === 'development'
 const plugins = [
   new ExtractPlugin('styles.[contentHash:8].css'),
@@ -21,7 +20,7 @@ if (isDev) {
   plugins.push(new VueServerPlugin())
 }
 
-config = merge(baseConfig, {
+const config = merge(baseConfig, {
   // 执行环境
   target: 'node',
   entry: path.join(__dirname, '../client/server-entry.js'),

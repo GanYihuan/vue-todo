@@ -1,14 +1,21 @@
 <template>
-  <transition name="fade" @after-leave="afterLeave" @after-enter="afterEnter">
+  <transition
+    name="fade"
+    @after-leave="afterLeave"
+    @after-enter="afterEnter"
+  >
     <div
+      v-show="visible"
       class="notification"
       :style="style"
-      v-show="visible"
       @mouseenter="clearTimer"
       @mouseleave="createTimer"
     >
-      <span class="content">{{content}}</span>
-      <a class="btn" @click="handleClose">{{btn}}</a>
+      <span class="content">{{ content }}</span>
+      <a
+        class="btn"
+        @click="handleClose"
+      >{{ btn }}</a>
     </div>
   </transition>
 </template>
@@ -26,27 +33,27 @@ export default {
       default: '关闭'
     }
   },
-  data () {
+  data() {
     return {
       visible: true
     }
   },
   computed: {
-    style () {
+    style() {
       return {}
     }
   },
   methods: {
-    handleClose (e) {
+    handleClose(e) {
       e.preventDefault()
       this.$emit('close')
     },
-    afterLeave () {
+    afterLeave() {
       this.$emit('closed')
     },
-    afterEnter () {},
-    clearTimer () {},
-    createTimer () {}
+    afterEnter() {},
+    clearTimer() {},
+    createTimer() {}
   }
 }
 </script>
@@ -70,5 +77,4 @@ export default {
   margin-left auto
   cursor pointer
 </style>
-
 

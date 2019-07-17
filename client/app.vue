@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <div id="cover"></div>
-    <div id="loading" v-show="loading">
-      <loading></loading>
+    <div id="cover" />
+    <div
+      v-show="loading"
+      id="loading"
+    >
+      <loading />
     </div>
-    <Header></Header>
+    <Header />
     <!-- <p>{{fullName}} {{counter}}</p> -->
     <!-- <p>{{textC}} {{textPlus}}</p> -->
     <!-- <router-link to="/app/123">app123</router-link>
@@ -24,12 +27,15 @@
     <div class="tab-container">
       <p>This is tab content</p>
     </div> -->
-    <transition name="fade" mode="out-in">
+    <transition
+      name="fade"
+      mode="out-in"
+    >
       <router-view />
     </transition>
     <!-- <button @click="notify">click me1</button> -->
     <!-- <notification content="test notify" /> -->
-    <Footer></Footer>
+    <Footer />
   </div>
 </template>
 
@@ -55,7 +61,21 @@ export default {
     Header,
     Footer,
     Loading
-    // Todo
+  },
+  computed: {
+    ...mapState(['loading'])
+    // ...mapState({
+    //   counter: (state) => state.count
+    // }),
+    // count () {
+    //   return this.$store.state.count
+    // },
+    // ...mapGetters({
+    //   'fullName': 'fullName'
+    // })
+    // fullName () {
+    //   return this.$store.getters.fullName
+    // }
   },
   mounted() {
     // console.log(this.$store)
@@ -81,21 +101,6 @@ export default {
         btn: 'close'
       })
     }
-  },
-  computed: {
-    ...mapState(['loading'])
-    // ...mapState({
-    //   counter: (state) => state.count
-    // }),
-    // count () {
-    //   return this.$store.state.count
-    // },
-    // ...mapGetters({
-    //   'fullName': 'fullName'
-    // })
-    // fullName () {
-    //   return this.$store.getters.fullName
-    // }
   }
 }
 </script>
@@ -133,5 +138,4 @@ export default {
   justify-content: center;
 }
 </style>
-
 

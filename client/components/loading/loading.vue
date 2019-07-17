@@ -1,7 +1,7 @@
 <template>
   <div class="spinner">
-    <div class="dot1"></div>
-    <div class="dot2"></div>
+    <div class="dot1" />
+    <div class="dot2" />
   </div>
 </template>
 
@@ -35,7 +35,6 @@
 }
 
 @keyframes sk-rotate { 100% { transform: rotate(360deg); }}
-
 
 @keyframes sk-bounce {
   0%, 100% {

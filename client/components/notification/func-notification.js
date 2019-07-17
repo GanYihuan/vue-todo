@@ -3,7 +3,7 @@ import Notification from './notification.vue'
 export default {
   extends: Notification,
   computed: {
-    style () {
+    style() {
       return {
         position: 'fixed',
         right: '20px',
@@ -11,31 +11,31 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.createTimer()
   },
   methods: {
-    createTimer () {
-      console.log(this.autoClose)
+    createTimer() {
+      // console.log(this.autoClose)
       if (this.autoClose) {
         this.timer = setTimeout(() => {
           this.visible = false
         }, this.autoClose)
       }
     },
-    clearTimer () {
+    clearTimer() {
       if (this.timer) {
         clearTimeout(this.timer)
       }
     },
-    afterEnter () {
+    afterEnter() {
       this.height = this.$el.offsetHeight
     }
   },
-  beforeDestory () {
+  beforeDestory() {
     this.clearTimer()
   },
-  data () {
+  data() {
     return {
       verticalOffset: 0,
       autoClose: 3000,

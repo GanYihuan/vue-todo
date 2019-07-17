@@ -21,7 +21,7 @@ const template = fs.readFileSync(
 
 const pageRouter = new Router()
 
-pageRouter.get('*', async (ctx) => {
+pageRouter.get('*', async(ctx) => {
   await serverRender(ctx, renderer, template, bundle)
 })
 

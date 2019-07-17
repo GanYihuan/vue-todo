@@ -4,6 +4,28 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 // console.log(Header.__docs)
 
 export default {
+  computed: {
+    // ...mapState(['loading']), // Use state data inside vuex
+    ...mapState({ // get vuex/state
+      // counter: 'count',
+      counter: state => state.count,
+      textA: state => state.a.text, // Call difference module
+      textC: state => state.c.text
+    }),
+    ...mapGetters({ // get vuex/getters
+      fullName: 'fullName',
+      textPlus: 'a/textPlus'
+    }),
+    count() {
+      return this.$store.state.count // get vuex store
+    },
+    textA() {
+      return this.$store.state.b.text // invoked module b
+    },
+    fullName() {
+      return this.$store.getters.fullName
+    }
+  },
   mounted() {
     /* routes.js Setting props: true, Pass routing parameters :id */
     console.log(this.$store) // get vuex store
@@ -37,28 +59,6 @@ export default {
         content: 'test $notify',
         btn: 'close'
       })
-    }
-  },
-  computed: {
-    // ...mapState(['loading']), // Use state data inside vuex
-    ...mapState({ // get vuex/state
-      // counter: 'count',
-      counter: state => state.count,
-      textA: state => state.a.text, // Call difference module
-      textC: state => state.c.text
-    }),
-    ...mapGetters({ // get vuex/getters
-      fullName: 'fullName',
-      textPlus: 'a/textPlus'
-    }),
-    count() {
-      return this.$store.state.count // get vuex store
-    },
-    textA() {
-      return this.$store.state.b.text // invoked module b
-    },
-    fullName() {
-      return this.$store.getters.fullName
     }
   }
 }

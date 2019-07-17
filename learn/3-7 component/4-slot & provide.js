@@ -2,7 +2,6 @@ import Vue from 'vue'
 
 const ChildComponent = { // child component
   template: '<div>child component: {{value}}</div>', // Grandfather component
-  // inject: ['yeye', 'data'],
   inject: ['yeye', 'value'], // Get all the parents
   mounted() {
     // $parent Can only get the upper level value

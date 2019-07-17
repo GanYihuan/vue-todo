@@ -2,19 +2,38 @@ import Vue from 'vue'
 
 new Vue({
   el: '#root',
+  data() {
+    return {
+      arr: [2, 3],
+      obj: {
+        a: '123',
+        b: '456',
+        c: '789'
+      },
+      picked: '',
+      text: 0,
+      active: false,
+      html: '<span>this is html</span>'
+    }
+  },
+  methods: {
+    clicked() {
+      console.log('clicked')
+    }
+  },
   template: `
     <div>
-      <div v-pre>Text: {{text}}</div> // 不解析结果
-      <div v-cloak>Text: {{text}}</div> // 基本用不到
-      <div v-once>Text: {{text}}</div> // 只监控一次
+      <div v-pre>Text: {{text}}</div> // Do not parse the result
+      <div v-cloak>Text: {{text}}</div>
+      <div v-once>Text: {{text}}</div> // Monitor only once
       <div>Text: {{text}}</div>
-      <div v-show="active">Text</div> // 加类名 display: none 与 display: show
-      <div v-if="text === 0" @click="clicked">Else Text: {{text}}</div> // 增删节点
+      <div v-show="active">Text</div> // Add class name display: none & display: show
+      <div v-if="text === 0" @click="clicked">Else Text: {{text}}</div> // Add and delete nodes
       <div v-else-if="text > 2">else content > 2</div>
       <div v-else>else content</div>
       <div v-text="html"></div>
       <div v-html="html"></div>
-      <input type="text" v-model.trim="text"/> // v-model 默认用在 input 标签上
+      <input type="text" v-model.trim="text"/> // v-model Used by default input
       <input type="text" v-model.number="text"/>
       <input type="text" v-model.lazy="text"/>
       <input type="checkbox" v-model="active"/>
@@ -34,24 +53,5 @@ new Vue({
         <li v-for="(val, key, index) in obj">{{val}}:{{key}}:{{index}}</li>
       </ul>
     </div>
-  `,
-  data() {
-    return {
-      arr: [2, 3],
-      obj: {
-        a: '123',
-        b: '456',
-        c: '789'
-      },
-      picked: '',
-      text: 0,
-      active: false,
-      html: '<span>this is html</span>'
-    }
-  },
-  methods: {
-    clicked() {
-      console.log('clicked')
-    }
-  }
+  `
 })

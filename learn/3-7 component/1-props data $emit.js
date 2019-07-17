@@ -30,7 +30,7 @@ const component = {
   template: `
     <div>
       <input type="text" v-model="text"/>
-      <span @click="handleChange">{{propOne}}</span>
+      <span @click="handleChange">{{propOned}}</span>
       <span v-show="active">see me if active</span>
     </div>
   `,

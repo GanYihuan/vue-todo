@@ -1,11 +1,12 @@
 ﻿import Vue from 'vue'
 import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
 import createRouter from './config/router'
+const router = createRouter()
+
 import App from './app.vue'
 import './assets/styles/global.styl'
-
-Vue.use(VueRouter)
-const router = createRouter()
 
 router.beforeEach((to, from, next) => { // Data validation, Triggered when the route changes
   console.log('1. before each invoked')

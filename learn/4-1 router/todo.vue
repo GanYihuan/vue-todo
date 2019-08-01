@@ -1,6 +1,6 @@
 ﻿<script>
 export default {
-  beforeRouteEnter(to, from, next) { // Trigger before route entry. can not be used this, vm can not be used(set props=true)
+  beforeRouteEnter(to, from, next) { // Trigger before route entry. can not be used `this`, vm can not be used(set props=true)
     console.log('3. todo before enter', this) // this => undefined
     next(vm => {
       console.log('after enter vm.id is ', vm.id)

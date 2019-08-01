@@ -31,7 +31,6 @@ export default () => {
         },
         mutations: {
           updateText(state, text) {
-            console.log('a.state', state)
             state.text = text
           }
         },

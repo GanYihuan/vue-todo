@@ -1,4 +1,12 @@
-﻿<script>
+﻿<!--
+ * @Description:
+ * @version:
+ * @Author: GanEhank
+ * @Date: 2019-03-22 04:51:07
+ * @LastEditors: GanEhank
+ * @LastEditTime: 2019-08-15 03:37:38
+ -->
+<script>
 /* grammar sugar: babel-preset-stage-1 */
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 // console.log(Header.__docs)
